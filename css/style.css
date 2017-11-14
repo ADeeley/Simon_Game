@@ -1,4 +1,28 @@
-h1 {
-  font-size: 2em; }
+.colourButtonBox {
+  width: 400px;
+  display: block;
+  margin: auto; }
+
+.colourButton, #red, #blue, #yellow, #green {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px; }
+
+#red {
+  background-color: red; }
+
+#blue {
+  background-color: blue;
+  color: white; }
+
+#yellow {
+  background-color: yellow; }
+
+#green {
+  background-color: green;
+  color: white; }
+
+#settingsBox {
+  margin: 50px; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,12 +1,29 @@
 <DOCTYPE! html>
 <head>
     <meta charset="UTF-8">
-    <title>Hello, World!</title>
+    <title>Salmon Says!</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="js/index.js"></script>
 </head>
-
 <body>
+    <!-- Main colour buttons -->
+    <div id="colourButtons" class="colourButtonBox">
+        <span id="red" class="colourButton">RED</span>
+        <span id="blue" class="colourButton">BLUE</span>
+        <span id="yellow" class="colourButton">YELLOW</span>
+        <span id="green" class="colourButton">GREEN</span>
+    </div>
 
+    <!-- Game options -->
+    <fieldset id="settingsBox">
+        <legend>Settings</legend>
+        <input type="checkbox" id="strictToggle" name="settings" value="strictToggle">
+        <label for="strictMode">Strict</label>
+        <button id="powerToggle" name="settings">Power</button>
+        <button id="reset" name="settings">Reset</button>
+        <button id="start" name="settings">Start</button>
+    </fieldset>
+
+    <!-- Main script loaded last -->
+    <script src="js/index.js"></script>
 </body>
 
