@@ -5,10 +5,7 @@ var Game = {
     listening : false,
     strict: false,
     power: false,
-    red : document.getElementById("red"),
-    blue : document.getElementById("blue"),
-    yellow : document.getElementById("yellow"),
-    green : document.getElementById("green"),
+    colourButtons : document.getElementById("colourButtons"),
     strictCheckbox : document.getElementById("strictToggle"),
     start : document.getElementById("start"),
     reset : document.getElementById("reset"),
@@ -22,16 +19,7 @@ Game.init = function() {
 }
 
 Game.uiBind = function() {
-    Game.red.addEventListener("click", () => {
-        Game.playerInput(event.target.id);
-    });
-    Game.blue.addEventListener("click", () => {
-        Game.playerInput(event.target.id);
-    });
-    Game.yellow.addEventListener("click", () => {
-        Game.playerInput(event.target.id);
-    });
-    Game.green.addEventListener("click", () => {
+    Game.colourButtons.addEventListener("click", () => {
         Game.playerInput(event.target.id);
     });
 }
@@ -49,10 +37,12 @@ Game.toggleStrictMode = function() {
 }
 
 Game.flash = function(colour) {
-    var temp = Game[colour].innerHTML;
-    Game[colour].innerHTML = "!";
+    console.log("Flash: " + colour);
+    var el = document.getElementById(colour);
+    var temp = el.innerHTML;
+    el.innerHTML = "!";
     setTimeout(() => {
-        Game[colour].innerHTML = colour;
+        el.innerHTML = colour;
     }, 1000);
 }
 
