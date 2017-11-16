@@ -63,12 +63,18 @@ game.togglePower = function() {
     game.power = !game.power;
 }
 
+game.toggleListenForPlayerInput = function() {
+    game.listening = !game.listening;
+}
+
 game.toggleStrictMode = function() {
     game.strict = !game.strict;
 }
 
 game.reset = function() {
     game.pattern = [];
+    game.userPattern = [];
+    game.listening = false;
 }
 
 game.incrementPattern = function() {
@@ -76,16 +82,15 @@ game.incrementPattern = function() {
     game.pattern.push(game.colours[choice]);
 }
 
-game.playPattern = function() {
-    var i = 0;
-    var intervalID = setInterval(() => {
-        game.flash(game.pattern[i++]);
-        if (i >= game.pattern.length) {
-            clearInterval(intervalID);
-        }
-    }, 1000);
-    console.log(game.pattern);
-    game.listenForPlayerInput();
+game.playPattern = function(i=0) {
+    game.flash(game.pattern[i++]);
+    if (i < game.pattern.length) {
+        return setTimeout(() => {
+            game.playPattern(i)
+        }, 1000);
+    }
+
+    game.toggleListenForPlayerInput();
 }
 
 game.patternsMatch = function() {
@@ -114,13 +119,10 @@ game.playerInput = function(colour) {
     else {
         console.log("Match");
         game.userPattern = [];
+        game.toggleListenForPlayerInput();
         game.incrementPattern();
         game.playPattern();
     }
-}
-
-game.listenForPlayerInput = function() {
-    game.listening = true;
 }
 
 game.init();
