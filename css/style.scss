@@ -9,6 +9,10 @@
     margin: 10px;
 }
 
+.flashingColourButton {
+    font-size: 20px;
+}
+
 #red {
     @extend .colourButton;
     background-color: red;

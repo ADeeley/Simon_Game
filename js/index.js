@@ -1,9 +1,62 @@
 var game = {
-    colours : ["R", "B", "Y", "G"],
+    colours : ["red", "blue", "yellow", "green"],
     pattern : [],
+    userPattern : [],
+    listening : false,
     strict: false,
     power: false,
+    red : document.getElementById("red"),
+    blue : document.getElementById("blue"),
+    yellow : document.getElementById("yellow"),
+    green : document.getElementById("green")
+}
 
+game.init = function() {
+    game.incrementPattern();
+    game.uiBind();
+}
+
+game.uiBind = function() {
+    game.red.addEventListener("click", () => {
+        game.playerInput(event.target.id);
+    });
+    game.blue.addEventListener("click", () => {
+        game.playerInput(event.target.id);
+    });
+    game.yellow.addEventListener("click", () => {
+        game.playerInput(event.target.id);
+    });
+    game.green.addEventListener("click", () => {
+        game.playerInput(event.target.id);
+    });
+}
+game.flash = function(colour) {
+    switch(colour) {
+        case "red":
+            game.red.innerHTML = "!";
+            setTimeout(() => {
+                game.red.innerHTML = "RED";
+            }, 1000);
+            break;
+        case "blue":
+            game.blue.innerHTML = "!";
+            setTimeout(() => {
+                game.blue.innerHTML = "BLUE";
+            }, 1000);
+            break;
+        case "yellow":
+            game.yellow.innerHTML = "!";
+            setTimeout(() => {
+                game.yellow.innerHTML = "yellow";
+            }, 1000);
+            break;
+        case "green":
+            game.green.innerHTML = "!";
+            setTimeout(() => {
+                game.green.innerHTML = "green";
+            }, 1000);
+            break;
+    }
 }
 
 game.togglePower = function() {
@@ -23,55 +76,52 @@ game.incrementPattern = function() {
     game.pattern.push(game.colours[choice]);
 }
 
-game.playSequence = function() {
+game.playPattern = function() {
     var i = 0;
     var intervalID = setInterval(() => {
-        console.log(game.pattern[i++]);
+        game.flash(game.pattern[i++]);
         if (i >= game.pattern.length) {
             clearInterval(intervalID);
         }
     }, 1000);
+    console.log(game.pattern);
+    game.listenForPlayerInput();
+}
+
+game.patternsMatch = function() {
+    for (var i=0; i<game.userPattern.length; i++) {
+        if (game.userPattern[i] != game.pattern[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+game.playerInput = function(colour) {
+    if (!game.listening) {
+        return;
+    }
+
+    game.userPattern.push(colour);
+
+    console.log(game.userPattern);
+    console.log(game.userPattern.length + " " + game.pattern.length); 
+    if (game.userPattern.length != game.pattern.length) {
+        return;
+    }
+    if (!game.patternsMatch()) {
+        console.log("Failed");
+    }
+    else {
+        console.log("Match");
+        game.userPattern = [];
+        game.incrementPattern();
+        game.playPattern();
+    }
 }
 
 game.listenForPlayerInput = function() {
-    //      player arr = [];
-    //
-    //      if length of arr == 20
-    //          playVictorySound()
-    //          playVictorySequence()
-    //          reset();
-    //      
-    //      listen for input: 
-    //
-    //      if error 
-    //          playErrorSound
-    //          playErrorSequence
-    //          if strict
-    //                  reset()
-    //          else
-    //                  playSequence()
-    //      else
-    //          add to array
-    //
-    //
-    //      if length of ar is same as game.sequence:
-    //          playCorrectSound()
-    //          playCorrectSequence()
-    //          incrementSequence()
-    //
-    //
-    //
-    //
-    //          
-
+    game.listening = true;
 }
 
-// Increment pattern Test
-console.log(game.pattern);
-for (var i=0; i<20; i++) {
-    game.incrementPattern();
-}
-console.log(game.pattern);
-
-//playSequence Test
-game.playSequence();
+game.init();
+game.playPattern();
