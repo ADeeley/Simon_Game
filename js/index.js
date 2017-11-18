@@ -21,7 +21,8 @@ const Game = {
 	strictCheckbox: document.getElementById('strictToggle'),
 	start: document.getElementById('start'),
 	reset: document.getElementById('reset'),
-	powerButton: document.getElementById('power')
+	powerButton: document.getElementById('power'),
+        alertText: document.getElementById('alertText')
 };
 /**
  * Sets up the function for play. Must be called first.
@@ -41,7 +42,7 @@ Game.uiBind = function() {
 		Game.getPlayerInput(event.target.id);
 	});
 	Game.start.addEventListener('click', () => {
-                console.log("Start");
+                console.log('Start');
                 Game.play();
 	});
 	Game.powerButton.addEventListener('click', () => {
@@ -50,7 +51,6 @@ Game.uiBind = function() {
 	Game.strictCheckbox.addEventListener('click', () => {
                 Game.toggleStrictMode();
 	});
-
 };
 /**
  * Turns the game on and off
@@ -59,7 +59,7 @@ Game.uiBind = function() {
  */
 Game.togglePower = function() {
 	Game.power = !Game.power;
-        console.log("Power: " + Game.power);
+        console.log('Power: ' + Game.power);
 };
 /**
  * A switch to prevent the game from interpreting user clicks when not required
@@ -104,7 +104,20 @@ Game.flash = function(colour) {
 	}, 1000);
 };
 /**
- * Sets the Game object's parameters to their 'factory' settings
+ * Displays a message to the user - e.g. "Fail" and resets the alertMessage to "" after
+ * 1 second.
+ *
+ * @param {String} message the string to display to the user
+ * @return null
+ */
+Game.displayAlert = function(message) {
+    Game.alertText.innerHTML = message;
+    setTimeout( () => {
+        Game.alertText.innerHTML = "";
+    }, 1000);
+};
+/**
+ * Sets the Game object's parameters to their 'factory' settings.
  *
  * @return null
  */
@@ -174,12 +187,12 @@ Game.getPlayerInput = function(colour) {
 Game.processInput = function() {
 	if (!Game.patternsMatch()) {
                 if (Game.strict) {
-                        console.log('Strict failed');
+                        Game.displayAlert("Strict Failed");
                         Game.reset();
                         Game.toggleListenForPlayerInput();
                         return;
                 } else {
-                        console.log('Failed');
+                        Game.displayAlert("Try Again");
                         Game.userPattern = [];
                         Game.toggleListenForPlayerInput();
                         Game.playPattern();
@@ -191,6 +204,7 @@ Game.processInput = function() {
 	if (Game.userPattern.length != Game.pattern.length) {
 		return;
         } else {
+                Game.displayAlert("Match");
 		console.log('Match');
 		Game.userPattern = [];
                 Game.toggleListenForPlayerInput();
