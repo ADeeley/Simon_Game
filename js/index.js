@@ -55,7 +55,7 @@ Game.uiBind = function() {
  */
 Game.togglePower = function() {
 	Game.power = !Game.power;
-        console.log(Game.power);
+        console.log("Power: " + Game.power);
 };
 /**
  * Starts the game and plays the first pattern
@@ -77,6 +77,7 @@ Game.play = function() {
  */
 Game.toggleListenForPlayerInput = function() {
 	Game.listening = !Game.listening;
+        console.log("Listening: " + Game.listening);
 };
 /**
  * Switches the game to the one-mistake-only version of the game.
@@ -92,7 +93,6 @@ Game.toggleStrictMode = function() {
  * @return null
  */
 Game.flash = function(colour) {
-	console.log('Flash: ' + colour);
 	let el = document.getElementById(colour);
 	el.innerHTML = '!';
 	setTimeout(() => {
@@ -107,7 +107,6 @@ Game.flash = function(colour) {
 Game.reset = function() {
 	Game.pattern = [];
 	Game.userPattern = [];
-	Game.listening = false;
 };
 /**
  * Adds another colour to the pattern that the user needs to copy
@@ -130,8 +129,8 @@ Game.playPattern = function(i = 0) {
 		return setTimeout(() => {
 			Game.playPattern(i);
 		}, 1000);
-	}
-	Game.toggleListenForPlayerInput();
+	} else Game.toggleListenForPlayerInput();
+        
 };
 /**
  * Checks if the pattern inputted by the player matches the generated pattern
@@ -169,22 +168,28 @@ Game.getPlayerInput = function(colour) {
  * @return null
  */
 Game.processInput = function() {
-        let match = false
 	if (!Game.patternsMatch()) {
-                console.log('Failed');
-                Game.reset();
-                return;
-        } else {
-                match = true;
+                if (Game.strict) {
+                        console.log('Failed');
+                        Game.toggleListenForPlayerInput();
+                        Game.reset();
+                        return;
+                } else {
+                        console.log('Failed');
+                        Game.userPattern = [];
+                        Game.toggleListenForPlayerInput();
+                        Game.playPattern();
+                        return;
+                }
         }
 
+        // Only proceed if the user has inputted a whole pattern
 	if (Game.userPattern.length != Game.pattern.length) {
 		return;
         } else {
-            if (match)
 		console.log('Match');
 		Game.userPattern = [];
-		Game.toggleListenForPlayerInput();
+                Game.toggleListenForPlayerInput();
 		Game.incrementPattern();
 		Game.playPattern();
 	}
