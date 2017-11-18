@@ -9,32 +9,32 @@ var Game = {
     strictCheckbox : document.getElementById("strictToggle"),
     start : document.getElementById("start"),
     reset : document.getElementById("reset"),
-    power : document.getElementById("power")
+    powerButton : document.getElementById("power")
 
-}
+};
 
 Game.init = function() {
     Game.incrementPattern();
     Game.uiBind();
-}
+};
 
 Game.uiBind = function() {
     Game.colourButtons.addEventListener("click", () => {
         Game.playerInput(event.target.id);
     });
-}
+};
 
 Game.togglePower = function() {
-    Game.power = !Game.power;
-}
+    Game.powerButton = !Game.powerButton;
+};
 
 Game.toggleListenForPlayerInput = function() {
     Game.listening = !Game.listening;
-}
+};
 
 Game.toggleStrictMode = function() {
     Game.strict = !Game.strict;
-}
+};
 
 Game.flash = function(colour) {
     console.log("Flash: " + colour);
@@ -44,29 +44,29 @@ Game.flash = function(colour) {
     setTimeout(() => {
         el.innerHTML = colour;
     }, 1000);
-}
+};
 
 Game.reset = function() {
     Game.pattern = [];
     Game.userPattern = [];
     Game.listening = false;
-}
+};
 
 Game.incrementPattern = function() {
     var choice = Math.floor(Math.random()*4);
     Game.pattern.push(Game.colours[choice]);
-}
+};
 
 Game.playPattern = function(i=0) {
     Game.flash(Game.pattern[i++]);
     if (i < Game.pattern.length) {
         return setTimeout(() => {
-            Game.playPattern(i)
+            Game.playPattern(i);
         }, 1000);
     }
 
     Game.toggleListenForPlayerInput();
-}
+};
 
 Game.patternsMatch = function() {
     for (var i=0; i<Game.userPattern.length; i++) {
@@ -75,7 +75,7 @@ Game.patternsMatch = function() {
         }
     }
     return true;
-}
+};
 Game.playerInput = function(colour) {
     // Prevent this function processing whilst other actions are 
     // being performed
@@ -101,7 +101,7 @@ Game.playerInput = function(colour) {
         Game.incrementPattern();
         Game.playPattern();
     }
-}
+};
 
 Game.init();
 Game.playPattern();
