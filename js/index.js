@@ -47,6 +47,10 @@ Game.uiBind = function() {
 	Game.powerButton.addEventListener('click', () => {
                 Game.togglePower();
 	});
+	Game.strictCheckbox.addEventListener('click', () => {
+                Game.toggleStrictMode();
+	});
+
 };
 /**
  * Turns the game on and off
@@ -56,19 +60,6 @@ Game.uiBind = function() {
 Game.togglePower = function() {
 	Game.power = !Game.power;
         console.log("Power: " + Game.power);
-};
-/**
- * Starts the game and plays the first pattern
- *
- * @return null
- */
-Game.play = function() {
-        if (!Game.power) {
-                console.log("Power not on.");
-                return
-        }
-	Game.incrementPattern();
-        Game.playPattern();
 };
 /**
  * A switch to prevent the game from interpreting user clicks when not required
@@ -86,6 +77,19 @@ Game.toggleListenForPlayerInput = function() {
  */
 Game.toggleStrictMode = function() {
 	Game.strict = !Game.strict;
+};
+/**
+ * Starts the game and plays the first pattern
+ *
+ * @return null
+ */
+Game.play = function() {
+        if (!Game.power) {
+                console.log("Power not on.");
+                return
+        }
+	Game.incrementPattern();
+        Game.playPattern();
 };
 /**
  * Animates the current colour in the sequence.
@@ -170,9 +174,9 @@ Game.getPlayerInput = function(colour) {
 Game.processInput = function() {
 	if (!Game.patternsMatch()) {
                 if (Game.strict) {
-                        console.log('Failed');
-                        Game.toggleListenForPlayerInput();
+                        console.log('Strict failed');
                         Game.reset();
+                        Game.toggleListenForPlayerInput();
                         return;
                 } else {
                         console.log('Failed');
