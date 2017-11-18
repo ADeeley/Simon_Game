@@ -29,7 +29,6 @@ const Game = {
  * @return null
  */
 Game.init = function() {
-	Game.incrementPattern();
 	Game.uiBind();
 };
 /**
@@ -39,7 +38,14 @@ Game.init = function() {
  */
 Game.uiBind = function() {
 	Game.colourButtons.addEventListener('click', () => {
-		Game.playerInput(event.target.id);
+		Game.getPlayerInput(event.target.id);
+	});
+	Game.start.addEventListener('click', () => {
+                console.log("Start");
+                Game.play();
+	});
+	Game.powerButton.addEventListener('click', () => {
+                Game.togglePower();
 	});
 };
 /**
@@ -48,7 +54,21 @@ Game.uiBind = function() {
  * @return null
  */
 Game.togglePower = function() {
-	Game.powerButton = !Game.powerButton;
+	Game.power = !Game.power;
+        console.log(Game.power);
+};
+/**
+ * Starts the game and plays the first pattern
+ *
+ * @return null
+ */
+Game.play = function() {
+        if (!Game.power) {
+                console.log("Power not on.");
+                return
+        }
+	Game.incrementPattern();
+        Game.playPattern();
 };
 /**
  * A switch to prevent the game from interpreting user clicks when not required
@@ -127,28 +147,41 @@ Game.patternsMatch = function() {
 	return true;
 };
 /**
- * Handles the player input. 
+ * Adds the player input to the userPattern parameter and passes control to the process inputfunction
  *
  * @param {String} colour The colour which the player has inputted.
  * @return null
  */
-Game.playerInput = function(colour) {
+Game.getPlayerInput = function(colour) {
 	// Prevent this function processing whilst other actions are 
 	// being performed
 	if (!Game.listening) {
 		return;
 	}
+
 	Game.userPattern.push(colour);
-	console.log(Game.userPattern);
-	console.log(Game.userPattern.length + ' ' + Game.pattern.length);
-	// Only proceed with checking if the arrays are of the same length
+        Game.processInput();
+};
+/**
+ * The main logic for the game - decides if the player input is correct and which 
+ * path to take
+ *
+ * @return null
+ */
+Game.processInput = function() {
+        let match = false
+	if (!Game.patternsMatch()) {
+                console.log('Failed');
+                Game.reset();
+                return;
+        } else {
+                match = true;
+        }
+
 	if (Game.userPattern.length != Game.pattern.length) {
 		return;
-	}
-	if (!Game.patternsMatch()) {
-            //To be filled in by failiure logic 
-            console.log('Failed');
-	} else {
+        } else {
+            if (match)
 		console.log('Match');
 		Game.userPattern = [];
 		Game.toggleListenForPlayerInput();
@@ -157,4 +190,3 @@ Game.playerInput = function(colour) {
 	}
 };
 Game.init();
-Game.playPattern();
