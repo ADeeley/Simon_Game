@@ -19,6 +19,22 @@
   border: 1px solid black;
   text-align: center; }
 
+.circle {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: grey; }
+
+.square {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  margin: -100px 0 0 -100px;
+  background-color: blue; }
+
 #red {
   background-color: red; }
 

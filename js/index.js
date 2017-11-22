@@ -11,26 +11,18 @@
  * @class Game
  */
 const Game = {
-	colours: ['red', 'blue', 'yellow', 'green'],
-	pattern: [],
-	userPattern: [],
-	listening: false,
-	strict: false,
-	power: false,
-	colourButtons: document.getElementById('colourButtons'),
-	strictCheckbox: document.getElementById('strictToggle'),
-	start: document.getElementById('start'),
-	reset: document.getElementById('reset'),
-	powerButton: document.getElementById('power'),
-        alertText: document.getElementById('alertText')
-};
-/**
- * Sets up the function for play. Must be called first.
- *
- * @return null
- */
-Game.init = function() {
-	Game.uiBind();
+    colours: ['red', 'blue', 'yellow', 'green'],
+    pattern: [],
+    userPattern: [],
+    listening: false,
+    strict: false,
+    power: false,
+    colourButtons: document.getElementById('colourButtons'),
+    strictCheckbox: document.getElementById('strictToggle'),
+    start: document.getElementById('start'),
+    reset: document.getElementById('reset'),
+    powerButton: document.getElementById('power'),
+    alertText: document.getElementById('alertText')
 };
 /**
  * Serves to keep the DOM references separate from the logic.
@@ -38,19 +30,19 @@ Game.init = function() {
  * @return null
  */
 Game.uiBind = function() {
-	Game.colourButtons.addEventListener('click', () => {
-		Game.getPlayerInput(event.target.id);
-	});
-	Game.start.addEventListener('click', () => {
-                console.log('Start');
-                Game.play();
-	});
-	Game.powerButton.addEventListener('click', () => {
-                Game.togglePower();
-	});
-	Game.strictCheckbox.addEventListener('click', () => {
-                Game.toggleStrictMode();
-	});
+    Game.colourButtons.addEventListener('click', () => {
+        Game.getPlayerInput(event.target.id);
+    });
+    Game.start.addEventListener('click', () => {
+        console.log('Start');
+        Game.play();
+    });
+    Game.powerButton.addEventListener('click', () => {
+        Game.togglePower();
+    });
+    Game.strictCheckbox.addEventListener('click', () => {
+        Game.toggleStrictMode();
+    });
 };
 /**
  * Turns the game on and off
@@ -58,8 +50,8 @@ Game.uiBind = function() {
  * @return null
  */
 Game.togglePower = function() {
-	Game.power = !Game.power;
-        console.log('Power: ' + Game.power);
+    Game.power = !Game.power;
+    console.log('Power: ' + Game.power);
 };
 /**
  * A switch to prevent the game from interpreting user clicks when not required
@@ -67,8 +59,8 @@ Game.togglePower = function() {
  * @return null
  */
 Game.toggleListenForPlayerInput = function() {
-	Game.listening = !Game.listening;
-        console.log("Listening: " + Game.listening);
+    Game.listening = !Game.listening;
+    console.log('Listening: ' + Game.listening);
 };
 /**
  * Switches the game to the one-mistake-only version of the game.
@@ -76,7 +68,7 @@ Game.toggleListenForPlayerInput = function() {
  * @return null
  */
 Game.toggleStrictMode = function() {
-	Game.strict = !Game.strict;
+    Game.strict = !Game.strict;
 };
 /**
  * Starts the game and plays the first pattern
@@ -84,12 +76,12 @@ Game.toggleStrictMode = function() {
  * @return null
  */
 Game.play = function() {
-        if (!Game.power) {
-                console.log("Power not on.");
-                return
-        }
-	Game.incrementPattern();
-        Game.playPattern();
+    if (!Game.power) {
+        console.log('Power not on.');
+        return;
+    }
+    Game.incrementPattern();
+    Game.playPattern();
 };
 /**
  * Animates the current colour in the sequence.
@@ -97,14 +89,14 @@ Game.play = function() {
  * @return null
  */
 Game.flash = function(colour) {
-	let el = document.getElementById(colour);
-	el.innerHTML = '!';
-	setTimeout(() => {
-		el.innerHTML = colour;
-	}, 1000);
+    let el = document.getElementById(colour);
+    el.innerHTML = '!';
+    setTimeout(() => {
+        el.innerHTML = colour;
+    }, 1000);
 };
 /**
- * Displays a message to the user - e.g. "Fail" and resets the alertMessage to "" after
+ * Displays a message to the user - e.g. 'Fail' and resets the alertMessage to '' after
  * 1 second.
  *
  * @param {String} message the string to display to the user
@@ -113,7 +105,7 @@ Game.flash = function(colour) {
 Game.displayAlert = function(message) {
     Game.alertText.innerHTML = message;
     setTimeout( () => {
-        Game.alertText.innerHTML = "";
+        Game.alertText.innerHTML = '';
     }, 1000);
 };
 /**
@@ -122,8 +114,8 @@ Game.displayAlert = function(message) {
  * @return null
  */
 Game.reset = function() {
-	Game.pattern = [];
-	Game.userPattern = [];
+    Game.pattern = [];
+    Game.userPattern = [];
 };
 /**
  * Adds another colour to the pattern that the user needs to copy
@@ -131,8 +123,8 @@ Game.reset = function() {
  * @return null
  */
 Game.incrementPattern = function() {
-	let choice = Math.floor(Math.random() * 4);
-	Game.pattern.push(Game.colours[choice]);
+    let choice = Math.floor(Math.random() * 4);
+    Game.pattern.push(Game.colours[choice]);
 };
 /**
  * Runs through the current pattern recursively, animating each colour in sequence.
@@ -141,12 +133,12 @@ Game.incrementPattern = function() {
  * @return null
  */
 Game.playPattern = function(i = 0) {
-	Game.flash(Game.pattern[i++]);
-	if (i < Game.pattern.length) {
-		return setTimeout(() => {
-			Game.playPattern(i);
-		}, 1000);
-	} else Game.toggleListenForPlayerInput();
+    Game.flash(Game.pattern[i++]);
+    if (i < Game.pattern.length) {
+        return setTimeout(() => {
+            Game.playPattern(i);
+        }, 1000);
+    } else Game.toggleListenForPlayerInput();
         
 };
 /**
@@ -155,12 +147,12 @@ Game.playPattern = function(i = 0) {
  * @return {Boolean} The decision as to if the strings match
  */
 Game.patternsMatch = function() {
-	for (let i = 0; i < Game.userPattern.length; i++) {
-		if (Game.userPattern[i] != Game.pattern[i]) {
-			return false;
-		}
-	}
-	return true;
+    for (let i = 0; i < Game.userPattern.length; i++) {
+        if (Game.userPattern[i] != Game.pattern[i]) {
+            return false;
+        }
+    }
+    return true;
 };
 /**
  * Adds the player input to the userPattern parameter and passes control to the process inputfunction
@@ -169,14 +161,14 @@ Game.patternsMatch = function() {
  * @return null
  */
 Game.getPlayerInput = function(colour) {
-	// Prevent this function processing whilst other actions are 
-	// being performed
-	if (!Game.listening) {
-		return;
-	}
+    // Prevent this function processing whilst other actions are 
+    // being performed
+    if (!Game.listening) {
+        return;
+    }
 
-	Game.userPattern.push(colour);
-        Game.processInput();
+    Game.userPattern.push(colour);
+    Game.processInput();
 };
 /**
  * The main logic for the game - decides if the player input is correct and which 
@@ -185,31 +177,37 @@ Game.getPlayerInput = function(colour) {
  * @return null
  */
 Game.processInput = function() {
-	if (!Game.patternsMatch()) {
-                if (Game.strict) {
-                        Game.displayAlert("Strict Failed");
-                        Game.reset();
-                        Game.toggleListenForPlayerInput();
-                        return;
-                } else {
-                        Game.displayAlert("Try Again");
-                        Game.userPattern = [];
-                        Game.toggleListenForPlayerInput();
-                        Game.playPattern();
-                        return;
-                }
-        }
-
-        // Only proceed if the user has inputted a whole pattern
-	if (Game.userPattern.length != Game.pattern.length) {
-		return;
+    if (!Game.patternsMatch()) {
+        if (Game.strict) {
+            Game.displayAlert('Strict Failed');
+            Game.reset();
+            Game.toggleListenForPlayerInput();
+            return;
         } else {
-                Game.displayAlert("Match");
-		console.log('Match');
-		Game.userPattern = [];
-                Game.toggleListenForPlayerInput();
-		Game.incrementPattern();
-		Game.playPattern();
-	}
+            Game.displayAlert('Try Again');
+            Game.userPattern = [];
+            Game.toggleListenForPlayerInput();
+            Game.playPattern();
+            return;
+        }
+    }
+
+    // Only proceed if the user has inputted a whole pattern
+    if (Game.userPattern.length != Game.pattern.length) {
+        return;
+    } else {
+        Game.displayAlert('Match');
+        console.log('Match');
+        Game.userPattern = [];
+        Game.toggleListenForPlayerInput();
+        Game.incrementPattern();
+        Game.playPattern();
+    }
 };
-Game.init();
+/**
+ * Sets up the Game object for play. Must be called first.
+ * @return null
+ */
+(function(Game) {
+    Game.uiBind();
+})(Game);
