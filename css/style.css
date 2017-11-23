@@ -21,10 +21,14 @@
 
 .circle {
   position: absolute;
-  width: 300px;
-  height: 300px;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  margin: -250px 0 0 -250px;
   border-radius: 50%;
-  background-color: grey; }
+  background-color: grey;
+  border: 50px solid black; }
 
 .square {
   position: absolute;

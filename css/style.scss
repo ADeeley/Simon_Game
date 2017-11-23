@@ -23,11 +23,18 @@
 }
 
 .circle {
+    $sz: 400px;
+    $bdr: 50px;
+    $compensate: -$sz / 2 - $bdr;
     position: absolute;
-    width: 300px;
-    height: 300px;
+    top: 50%;
+    left: 50%;
+    width: $sz;
+    height: $sz;
+    margin: $compensate 0 0 -250px;
     border-radius: 50%;
     background-color: grey;
+    border: 50px solid black;
 }
 
 .square {
