@@ -1,3 +1,18 @@
+$hub: 200px;
+$controls: 100px;
+
+@mixin centre($sz, $border) {
+    position: absolute;
+    $compensate: -$sz / 2;
+    // Allow for optional border
+    @if $border {
+        $compensate: $compensate - $border;
+    }
+    top: 50%;
+    left: 50%;
+    margin: $compensate 0 0 $compensate;
+}
+
 .colourButtonBox {
     width: 400px;
     display: block;
@@ -23,28 +38,18 @@
 }
 
 .circle {
-    $sz: 400px;
-    $bdr: 50px;
-    $compensate: -$sz / 2 - $bdr;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: $sz;
-    height: $sz;
-    margin: $compensate 0 0 -250px;
+    @include centre($hub, 25);
+    width: $hub;
+    height: $hub; 
+    border: 25px solid black;
     border-radius: 50%;
     background-color: grey;
-    border: 50px solid black;
 }
 
 .square {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 200px;
-    height: 200px;
-    margin: -100px 0 0 -100px;
-
+    @include centre($controls, 0);
+    width: $controls;
+    height: $controls; 
     background-color: blue;
 }
 
@@ -72,4 +77,32 @@
 
 #settingsBox {
     margin: 50px;
+}
+// Width and height set...
+#salmon_1 {
+    max-width: 100%;
+    transform: translateX(150px);
+    -ms-transform: translateX(150px);
+    -webkit-transform: translateX(150px);
+}
+
+#salmon_2 {
+    max-width: 100%;
+    transform: rotate(90deg);
+    transform: translateY(100px);
+
+    -ms-transform: rotate(90deg);
+    -ms-transform: translateY(100px);
+
+    -webkit-transform: rotate(90deg);
+    -webkit-transform: translateY(100px);
+
+}
+
+#salmon_3 {
+    max-width: 100%;
+}
+
+#salmon_4 {
+    max-width: 100%;
 }
