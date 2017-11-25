@@ -235,7 +235,8 @@ Game.getPlayerInput = function(colour) {
 Game.processInput = function() {
     console.log('Processing Input...');
     if (!Game.patternsMatch()) {
-        if (Game.isStrict) {
+        if (Game.isStrict()) {
+            console.log("Strict: " + Game.isStrict());
             Game.displayAlert('Strict Failed');
             Game.reset();
             Game.toggleListenForPlayerInput();
@@ -268,7 +269,6 @@ Game.processInput = function() {
  * Serves to keep the DOM references separate from the logic.
  * 
  * @return null
- * 
  */
 document.getElementById('colourButtons').addEventListener('click', () => {
     Game.getPlayerInput(event.target.id);
