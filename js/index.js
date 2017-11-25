@@ -38,19 +38,19 @@ Game.init = function() {
  * @return null
  */
 Game.uiBind = function() {
-    Game.colourButtons.addEventListener('click', () => {
-        Game.getPlayerInput(event.target.id);
-    });
-    Game.start.addEventListener('click', () => {
-        console.log('Start');
-        Game.play();
-    });
-    Game.powerButton.addEventListener('click', () => {
-        Game.togglePower();
-    });
-    Game.strictCheckbox.addEventListener('click', () => {
-        Game.toggleStrictMode();
-    });
+	Game.colourButtons.addEventListener('click', () => {
+		Game.getPlayerInput(event.target.id);
+	});
+	Game.start.addEventListener('click', () => {
+                console.log('Start');
+                Game.play();
+	});
+	Game.powerButton.addEventListener('click', () => {
+                Game.togglePower();
+	});
+	Game.strictCheckbox.addEventListener('click', () => {
+                Game.toggleStrictMode();
+	});
 };
 /**
  * Turns the game on and off
@@ -58,8 +58,8 @@ Game.uiBind = function() {
  * @return null
  */
 Game.togglePower = function() {
-    Game.power = !Game.power;
-    console.log('Power: ' + Game.power);
+	Game.power = !Game.power;
+        console.log('Power: ' + Game.power);
 };
 /**
  * A switch to prevent the game from interpreting user clicks when not required
@@ -114,6 +114,19 @@ Game.displayAlert = function(message) {
     Game.alertText.innerHTML = message;
     setTimeout( () => {
         Game.alertText.innerHTML = '';
+    }, 1000);
+};
+/**
+ * Displays a message to the user - e.g. "Fail" and resets the alertMessage to "" after
+ * 1 second.
+ *
+ * @param {String} message the string to display to the user
+ * @return null
+ */
+Game.displayAlert = function(message) {
+    Game.alertText.innerHTML = message;
+    setTimeout( () => {
+        Game.alertText.innerHTML = "";
     }, 1000);
 };
 /**
