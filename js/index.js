@@ -13,14 +13,16 @@
 const Game = ( function() {
     // members ===================================================
     var colours = ['red', 'blue', 'yellow', 'green'],
-        pattern = [],
+        cpuPattern = [],
         userPattern = [],
         listening = false,
         strict = false,
         power = false,
         alertText = document.getElementById('alertText');
 
+    // ======================================================================
     // Privileged Methods ===================================================
+    // ======================================================================
     /**
      * Turns the game on and off
      *
@@ -59,6 +61,15 @@ const Game = ( function() {
         return listening;
     }
     /**
+     * Pushes the user input to the userPattern property
+     *
+     * @return null
+     */
+    function recordUserInput(colour) {
+        userPattern.push(colour);
+        return this;
+    }
+    /**
      * Switches the game to the one-mistake-only version of the game.
      *
      * @return null
@@ -77,23 +88,13 @@ const Game = ( function() {
         return strict;
     }
     /**
-     * Sets the Game object's parameters to their 'factory' settings.
-     *
-     * @return null
-     */
-    function reset() {
-        pattern = [];
-        userPattern = [];
-        return this;
-    }
-    /**
      * Adds another colour to the pattern that the user needs to copy
      *
      * @return null
      */
     function incrementPattern() {
         let choice = Math.floor(Math.random() * 4);
-        pattern.push(colours[choice]);
+        cpuPattern.push(colours[choice]);
         return this;
     }
     /**
@@ -106,26 +107,14 @@ const Game = ( function() {
         return this;
     }
     /**
-     * Animates the current colour in the sequence.
-     *
-     * @return null
-     */
-    function flash(colour) {
-        let el = document.getElementById(colour);
-        el.innerHTML = '!';
-        setTimeout(() => {
-            el.innerHTML = colour;
-        }, 1000);
-    }
-    /**
      * Runs through the current pattern recursively, animating each colour in sequence.
      *
      * @param {Number} i used to keep track of numbers remaining in the pattern array
      * @return null
      */
     function playPattern(i = 0) {
-        flash(pattern[i++]);
-        if (i < pattern.length) {
+        flash(cpuPattern[i++]);
+        if (i < cpuPattern.length) {
             return setTimeout(() => {
                 playPattern(i);
             }, 1000);
@@ -139,11 +128,19 @@ const Game = ( function() {
      */
     function patternsMatch() {
         for (let i = 0; i < userPattern.length; i++) {
-            if (userPattern[i] != pattern[i]) {
+            if (userPattern[i] != cpuPattern[i]) {
                 return false;
             }
         }
         return true;
+    }
+    /**
+     * Returns true if the userPattern and pattern are of the same length
+     *
+     * @return {Boolean} result of length test
+     */
+    function patternsAreOfEqualLength() {
+        return cpuPattern.length === userPattern.length;
     }
     /**
      * Displays a message to the user - e.g. "Fail" and resets the alertMessage to "" after
@@ -173,39 +170,51 @@ const Game = ( function() {
         playPattern();
     }
     /**
-     * Pushes the user input to the userPattern property
+     * Sets the Game object's parameters to their 'factory' settings.
      *
      * @return null
      */
-    function recordUserInput(colour) {
-        userPattern.push(colour);
+    function reset() {
+        cpuPattern = [];
+        userPattern = [];
         return this;
     }
     /**
-     * Returns true if the userPattern and pattern are of the same length
+     * Animates the current colour in the sequence.
      *
-     * @return {Boolean} result of length test
+     * @return null
      */
-    function patternsAreOfEqualLength() {
-        return pattern.length === userPattern.length;
+
+    // ======================================================================
+    // Private Methods ===================================================
+    // ======================================================================
+    function flash(colour) {
+        let el = document.getElementById(colour);
+        el.innerHTML = '!';
+        setTimeout(() => {
+            el.innerHTML = colour;
+        }, 1000);
     }
+
     // Revealing module pattern ===========================================
     return {
         togglePower: togglePower,
         isPoweredOn: isPoweredOn,
         toggleListenForPlayerInput: toggleListenForPlayerInput,
+        isListening: isListening,
+        recordUserInput: recordUserInput,
         toggleStrictMode: toggleStrictMode,
-        reset: reset,
+        isStrict: isStrict,
+
         incrementPattern: incrementPattern,
         playPattern: playPattern,
         patternsMatch: patternsMatch,
-        displayAlert: displayAlert,
-        isListening: isListening,
-        play: play,
-        recordUserInput: recordUserInput,
         patternsAreOfEqualLength: patternsAreOfEqualLength,
-        isStrict: isStrict,
-        clearUserPattern: clearUserPattern
+        clearUserPattern: clearUserPattern,
+
+        displayAlert: displayAlert,
+        play: play,
+        reset: reset
     };
 })();
 /**
@@ -264,11 +273,12 @@ Game.processInput = function() {
     }
 };
 
-// One-time DOM event listener inits 
-/**
+// One-time DOM event listeer inits 
+/**n
  * Serves to keep the DOM references separate from the logic.
  * 
  * @return null
+ * 
  */
 document.getElementById('colourButtons').addEventListener('click', () => {
     Game.getPlayerInput(event.target.id);
