@@ -13,6 +13,7 @@
 const Game = ( function() {
     // members ===================================================
     var colours = ['red', 'blue', 'yellow', 'green'],
+        sounds = {},
         cpuPattern = [],
         userPattern = [],
         listening = false,
@@ -113,7 +114,8 @@ const Game = ( function() {
      * @return null
      */
     function playPattern(i = 0) {
-        flash(cpuPattern[i++]);
+        flash(cpuPattern[i]);
+        playAudio(cpuPattern[i++]);
         if (i < cpuPattern.length) {
             return setTimeout(() => {
                 playPattern(i);
@@ -181,7 +183,6 @@ const Game = ( function() {
     }
     /**
      * Animates the current colour in the sequence.
-     *
      * @return null
      */
 
@@ -194,6 +195,62 @@ const Game = ( function() {
         setTimeout(() => {
             el.innerHTML = colour;
         }, 1000);
+    }
+    function getAudioSources() {
+        for (let i = 0; i < 4; i++) {
+            let sound = document.getElementById('simonSound' + i);
+            sounds[colours[i]] = sound;
+        }
+    }
+    /**
+     * Plays the audio associated with the given colour
+     */
+    function playAudio(colour) {
+        sounds[colour].play();
+    }
+
+    function init() {
+        getAudioSources();
+        /*
+        console.log(sounds);
+        sounds['red'].play();
+        */
+
+        document.getElementById('colourButtons').addEventListener('click', () => {
+            getPlayerInput(event.target.id);
+        });
+        document.getElementById('start').addEventListener('click', () => {
+            console.log('Start');
+            play();
+        });
+        document.getElementById('power').addEventListener('click', () => {
+            togglePower();
+        });
+        document.getElementById('strictToggle').addEventListener('click', () => {
+            toggleStrictMode();
+        });
+        document.getElementById('reset').addEventListener('click', () => {
+            reset();
+        });
+    }
+
+    /**
+     * Adds the player input to the userPattern parameter and passes control to the process inputfunction
+     *
+     * @param {String} colour The colour which the player has inputted.
+     * @return null
+     */
+    function getPlayerInput(colour) {
+        // Prevent this function processing whilst other actions are 
+        // being performed
+        console.log('clicked ' + colour);
+
+        if (!Game.isListening) {
+            return;
+        }
+        Game.recordUserInput(colour);
+        Game.playAudio(colour);
+        Game.processInput();
     }
 
     // Revealing module pattern ===========================================
@@ -211,30 +268,16 @@ const Game = ( function() {
         patternsMatch: patternsMatch,
         patternsAreOfEqualLength: patternsAreOfEqualLength,
         clearUserPattern: clearUserPattern,
+        getPlayerInput: getPlayerInput,
 
         displayAlert: displayAlert,
         play: play,
-        reset: reset
+        reset: reset,
+        init: init,
+
+        playAudio: playAudio,
     };
 })();
-/**
- * Adds the player input to the userPattern parameter and passes control to the process inputfunction
- *
- * @param {String} colour The colour which the player has inputted.
- * @return null
- */
-Game.getPlayerInput = function(colour) {
-    // Prevent this function processing whilst other actions are 
-    // being performed
-    console.log('clicked ' + colour);
-
-    if (!Game.isListening) {
-        return;
-    }
-
-    Game.recordUserInput(colour);
-    Game.processInput();
-};
 /**
  * The main logic for the game - decides if the player input is correct and which 
  * path to take
@@ -245,7 +288,7 @@ Game.processInput = function() {
     console.log('Processing Input...');
     if (!Game.patternsMatch()) {
         if (Game.isStrict()) {
-            console.log("Strict: " + Game.isStrict());
+            console.log('Strict: ' + Game.isStrict());
             Game.displayAlert('Strict Failed');
             Game.reset();
             Game.toggleListenForPlayerInput();
@@ -272,27 +315,4 @@ Game.processInput = function() {
         Game.playPattern();
     }
 };
-
-// One-time DOM event listeer inits 
-/**n
- * Serves to keep the DOM references separate from the logic.
- * 
- * @return null
- * 
- */
-document.getElementById('colourButtons').addEventListener('click', () => {
-    Game.getPlayerInput(event.target.id);
-});
-document.getElementById('start').addEventListener('click', () => {
-    console.log('Start');
-    Game.play();
-});
-document.getElementById('power').addEventListener('click', () => {
-    Game.togglePower();
-});
-document.getElementById('strictToggle').addEventListener('click', () => {
-    Game.toggleStrictMode();
-});
-document.getElementById('reset').addEventListener('click', () => {
-    Game.reset();
-});
+window.onload = Game.init();
