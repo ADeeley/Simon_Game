@@ -186,10 +186,6 @@ const Game = ( function() {
      * Animates the current colour in the sequence.
      * @return null
      */
-
-    // ======================================================================
-    // Private Methods ===================================================
-    // ======================================================================
     function flash(colour) {
         let el = document.getElementById(colour);
         el.innerHTML = '!';
@@ -256,27 +252,24 @@ const Game = ( function() {
 
     // Revealing module pattern ===========================================
     return {
-        togglePower: togglePower,
-        isPoweredOn: isPoweredOn,
-        toggleListenForPlayerInput: toggleListenForPlayerInput,
-        isListening: isListening,
-        recordUserInput: recordUserInput,
-        toggleStrictMode: toggleStrictMode,
-        isStrict: isStrict,
-
-        incrementPattern: incrementPattern,
-        playPattern: playPattern,
-        patternsMatch: patternsMatch,
-        patternsAreOfEqualLength: patternsAreOfEqualLength,
-        clearUserPattern: clearUserPattern,
-        getPlayerInput: getPlayerInput,
-
-        displayAlert: displayAlert,
-        play: play,
-        reset: reset,
-        init: init,
-
-        playAudio: playAudio,
+        togglePower,
+        isPoweredOn,
+        toggleListenForPlayerInput,
+        isListening,
+        recordUserInput,
+        toggleStrictMode,
+        isStrict,
+        incrementPattern,
+        playPattern,
+        patternsMatch,
+        patternsAreOfEqualLength,
+        clearUserPattern,
+        getPlayerInput,
+        displayAlert,
+        play,
+        reset,
+        init,
+        playAudio,
     };
 })();
 Game.repeatPattern = function() {
