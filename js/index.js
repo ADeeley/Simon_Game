@@ -114,8 +114,9 @@ const Game = ( function() {
      * @return null
      */
     function playPattern(i = 0) {
-        flash(cpuPattern[i]);
-        playAudio(cpuPattern[i++]);
+        let colour = cpuPattern[i++];
+        flash(colour);
+        playAudio(colour);
         if (i < cpuPattern.length) {
             return setTimeout(() => {
                 playPattern(i);
@@ -278,6 +279,13 @@ const Game = ( function() {
         playAudio: playAudio,
     };
 })();
+Game.repeatPattern = function() {
+    Game.clearUserPattern();
+    setTimeout(() => {
+        Game.toggleListenForPlayerInput();
+        Game.playPattern();
+    }, 1000);
+};
 /**
  * The main logic for the game - decides if the player input is correct and which 
  * path to take
@@ -295,13 +303,10 @@ Game.processInput = function() {
             return;
         } else {
             Game.displayAlert('Try Again');
-            Game.clearUserPattern();
-            Game.toggleListenForPlayerInput();
-            Game.playPattern();
+            Game.repeatPattern();
             return;
         }
     }
-
     // Only proceed if the user has inputted a whole pattern
     if (!Game.patternsAreOfEqualLength()) {
         console.log('not of equal len');
@@ -309,10 +314,8 @@ Game.processInput = function() {
     } else {
         Game.displayAlert('Match');
         console.log('Match');
-        Game.clearUserPattern();
-        Game.toggleListenForPlayerInput();
         Game.incrementPattern();
-        Game.playPattern();
+        Game.repeatPattern();
     }
 };
 window.onload = Game.init();
