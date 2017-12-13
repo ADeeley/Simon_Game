@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <head>
-    <meta charset="UTF-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
     <title>Salmon Says!</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
     <audio id="simonSound0">
         <source src="audio/simonSound0.mp3" type="audio/mpeg">
     </audio>
@@ -17,30 +22,33 @@
     </audio>
 </head>
 <body>
-    <div id="mainContainer">
-        <!-- Main colour buttons -->
-        <div id="colourButtons" class="colourButtonBox">
-            <span id="red" class="colourButton">RED</span>
-            <span id="blue" class="colourButton">BLUE</span>
-            <span id="yellow" class="colourButton">YELLOW</span>
-            <span id="green" class="colourButton">GREEN</span>
-        </div>
-
-        <!-- Alert Box -->
-        <div id="AlertBox" class="alert">
-            <p id="alertText"></p>
-
-        </div>
-        <!-- Game options -->
-        <fieldset id="settingsBox">
-            <legend>Settings</legend>
-            <input type="checkbox" id="strictToggle" name="settings" value="strictToggle">
-            <label for="strictMode">Strict</label>
-            <span id="power" name="settings" class="switch">Power</span>
+    <!-- Game options -->
+    <div class="container">
+        <div id="menu" class="centreBlock">
+            <label >
+                <input type="checkbox" checked autocomplete="off" id="strictToggle" name="settings" >Strict
+            </label>
+            <button id="power" name="settings">Power</button>
             <button id="reset" name="settings">Reset</button>
             <button id="start" name="settings">Start</button>
+        </div>
+        <div id="colourButtons" class="centreBlock">
+            <!-- Main colour buttons -->
+            <div>
+                <button id="red" class="redButton">RED</button>
+                <button id="blue" class="blueButton">BLUE</button>
+            </div>
+            <div>
+                <button id="yellow" class="yellowButton">YELLOW</button>
+                <button id="green" class="greenButton">GREEN</button>
+            </div>
 
-        </fieldset>
+            <!-- Alert Box -->
+            <div id="AlertBox" class="alert">
+                <p id="alertText"></p>
+
+            </div>
+        </div>
     </div>
     <!-- Main script loaded last -->
     <script src="js/index.js"></script>

@@ -1,45 +1,40 @@
-.colourButtonBox {
-  width: 400px;
+.centreBlock {
   display: block;
-  margin: auto; }
-
-.colourButton, #red, #blue, #yellow, #green {
-  border: 1px solid black;
-  padding: 10px;
-  margin: 10px; }
-
-.flashingColourButton {
-  font-size: 20px; }
-
-.alert {
-  width: 100px;
-  height: 50px;
-  display: block;
-  margin: 100px auto;
-  border: 1px solid black;
+  margin: auto;
   text-align: center; }
 
-.switch {
-  width: 60px;
-  height: 40px;
-  background-color: black;
-  color: white; }
+.colourButton, .redButton, .blueButton, .yellowButton, .greenButton {
+  height: 300px;
+  width: 300px;
+  color: white;
+  border-radius: 10%; }
 
-#red {
-  background-color: red; }
+.redButton {
+  background-color: red;
+  transition-duration: 0.2s; }
 
-#blue {
-  background-color: blue;
-  color: white; }
+.redButton:hover {
+  background-color: #c80000; }
 
-#yellow {
+.blueButton {
+  background-color: blue; }
+
+.blueButton:hover {
+  background-color: #0000c8;
+  transition-duration: 0.2s; }
+
+.yellowButton {
   background-color: yellow; }
 
-#green {
-  background-color: green;
-  color: white; }
+.yellowButton:hover {
+  background-color: #e6e600;
+  transition-duration: 0.2s; }
 
-#settingsBox {
-  margin: 50px; }
+.greenButton {
+  background-color: #00e600; }
+
+.greenButton:hover {
+  background-color: #00c800;
+  transition-duration: 0.2s; }
 
 /*# sourceMappingURL=style.css.map */
