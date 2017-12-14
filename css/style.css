@@ -8,9 +8,9 @@
   background-color: grey; }
 
 .menuButtons {
-  border-radius: 5px;
+  border-radius: 50%;
   height: 50px;
-  width: 100px; }
+  width: 50px; }
 
 .centreBlock {
   display: block;
@@ -81,5 +81,13 @@
 
 .switchInnerOff {
   margin-top: 50px; }
+
+.light {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 2px solid white;
+  border-radius: 50%;
+  background-color: darkred; }
 
 /*# sourceMappingURL=style.css.map */
