@@ -23,7 +23,7 @@
 </head>
 <body>
     <!-- Game options -->
-    <div class="container" class="background">
+    <div id="container" class="background">
         <div id="menu" class="menuBlock">
             <label >
                 <input type="checkbox" class="menuButtons" checked autocomplete="off" id="strictToggle" name="settings" >Strict
@@ -35,21 +35,19 @@
         <div id="colourButtons" class="centreBlock">
             <!-- Main colour buttons -->
             <div>
-                <button id="red" class="redButton">RED</button>
-                <button id="blue" class="blueButton">BLUE</button>
+                <button id="red" class="redButton"></button>
+                <button id="blue" class="blueButton"></button>
             </div>
             <div>
-                <button id="yellow" class="yellowButton">YELLOW</button>
-                <button id="green" class="greenButton">GREEN</button>
+                <button id="yellow" class="yellowButton"></button>
+                <button id="green" class="greenButton"></button>
             </div>
 
         </div>
-        <div id="footerBar">
-            <p>SIMON - 6000</p>
-            <!-- Alert Box -->
+        <div id="footerBar" class="footer">
+            <p id="gameName" class="gameNameStyle">SIMON - 6000</p>
             <div id="AlertBox" class="alert">
                 <p id="alertText"></p>
-
             </div>
         </div>
     </div>

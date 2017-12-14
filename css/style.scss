@@ -16,9 +16,14 @@
 
 .colourButtons {
     border-radius: 10%;
-    height: 300px;
-    width: 300px;
+    width: 49%;
     color: white;
+}
+
+.colourButtons:after {
+    display: block;
+    content: "";
+    padding-bottom: 100%;
 }
 
 .menuButtons {
@@ -67,14 +72,14 @@
 }
 
 .alert {
-    position: fixed;
     background-color: grey;
     border: 1px solid black;
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    right: 50%;
-    bottom: 50%;
-    margin-bottom: -50px;
-    margin-right: -50px;
+    height: 50px;
+}
+.gameNameStyle {
+    display: inline;
+}
+
+.footer {
+    background-color: darkGrey;
 }
