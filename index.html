@@ -23,14 +23,14 @@
 </head>
 <body>
     <!-- Game options -->
-    <div class="container">
-        <div id="menu" class="centreBlock">
+    <div class="container" class="background">
+        <div id="menu" class="menuBlock">
             <label >
-                <input type="checkbox" checked autocomplete="off" id="strictToggle" name="settings" >Strict
+                <input type="checkbox" class="menuButtons" checked autocomplete="off" id="strictToggle" name="settings" >Strict
             </label>
-            <button id="power" name="settings">Power</button>
-            <button id="reset" name="settings">Reset</button>
-            <button id="start" name="settings">Start</button>
+            <button id="power" name="settings" class="menuButtons">Power</button>
+            <button id="reset" name="settings" class="menuButtons">Reset</button>
+            <button id="start" name="settings" class="menuButtons">Start</button>
         </div>
         <div id="colourButtons" class="centreBlock">
             <!-- Main colour buttons -->
@@ -43,6 +43,9 @@
                 <button id="green" class="greenButton">GREEN</button>
             </div>
 
+        </div>
+        <div id="footerBar">
+            <p>SIMON - 6000</p>
             <!-- Alert Box -->
             <div id="AlertBox" class="alert">
                 <p id="alertText"></p>

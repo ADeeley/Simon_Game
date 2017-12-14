@@ -1,13 +1,27 @@
+.background {
+  background-color: brown; }
+
+.menuBlock {
+  display: block;
+  margin: auto;
+  text-align: center;
+  background-color: grey; }
+
 .centreBlock {
   display: block;
   margin: auto;
   text-align: center; }
 
-.colourButton, .redButton, .blueButton, .yellowButton, .greenButton {
+.colourButtons, .redButton, .blueButton, .yellowButton, .greenButton {
+  border-radius: 10%;
   height: 300px;
   width: 300px;
-  color: white;
-  border-radius: 10%; }
+  color: white; }
+
+.menuButtons {
+  border-radius: 5px;
+  height: 50px;
+  width: 100px; }
 
 .redButton {
   background-color: red;
@@ -36,5 +50,17 @@
 .greenButton:hover {
   background-color: #00c800;
   transition-duration: 0.2s; }
+
+.alert {
+  position: fixed;
+  background-color: grey;
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  right: 50%;
+  bottom: 50%;
+  margin-bottom: -50px;
+  margin-right: -50px; }
 
 /*# sourceMappingURL=style.css.map */
