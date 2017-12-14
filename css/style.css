@@ -7,6 +7,11 @@
   text-align: center;
   background-color: grey; }
 
+.menuButtons {
+  border-radius: 5px;
+  height: 50px;
+  width: 100px; }
+
 .centreBlock {
   display: block;
   margin: auto;
@@ -21,11 +26,6 @@
   display: block;
   content: "";
   padding-bottom: 100%; }
-
-.menuButtons {
-  border-radius: 5px;
-  height: 50px;
-  width: 100px; }
 
 .redButton {
   background-color: red;
@@ -65,5 +65,21 @@
 
 .footer {
   background-color: darkGrey; }
+
+.switchOuter {
+  display: inline-block;
+  height: 100px;
+  width: 50px;
+  background-color: grey;
+  border: 2px solid black; }
+
+.switchInnerOn, .switchInnerOff {
+  height: 46px;
+  width: 46px;
+  background-color: darkgrey;
+  border: 2px solid black; }
+
+.switchInnerOff {
+  margin-top: 50px; }
 
 /*# sourceMappingURL=style.css.map */
