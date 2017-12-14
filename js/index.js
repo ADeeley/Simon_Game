@@ -187,10 +187,11 @@ const Game = ( function() {
      * @return null
      */
     function flash(colour) {
-        let el = document.getElementById(colour);
-        el.innerHTML = '!';
+        let el = document.getElementById(colour).style;
+        let prevClr = el['background-color'];
+        el['background-color'] = 'white';
         setTimeout(() => {
-            el.innerHTML = colour;
+            el['background-color'] = prevClr;
         }, 1000);
     }
     function getAudioSources() {
