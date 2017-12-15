@@ -11,10 +11,18 @@
 }
 
 .menuButtons {
+    border-style:none;
+    outline: none;
     cursor: pointer;
     border-radius: 50%;
     height: 50px;
     width: 50px;
+    box-shadow: 0 6px #999;
+}
+
+.menuButtons:active {
+    box-shadow: 0 2px #666;
+    transform: translateY(4px);
 }
 
 .centreBlock {
@@ -43,13 +51,13 @@
 .colourButtons:active {
     box-shadow: 0 5px #666;
     transform: translateY(4px);
-
 }
 
 .redButton {
     @extend .colourButtons;
     background-color: rgb(255, 0, 0);
 }
+
 .redButton:hover {
     background-color: rgb(200, 0, 0);
     transition-duration: 0.1s;
@@ -100,7 +108,8 @@
     background-color: darkGrey;
 }
 
-// Switches:
+// Switches =====================================================
+
 .switchOuter {
     display: inline-block;
     height: 100px;
@@ -120,6 +129,8 @@
     @extend .switchInnerOn;
     margin-top: 50px;
 }
+
+// LED Lights ====================================================
 
 .light {
     display: inline-block;
