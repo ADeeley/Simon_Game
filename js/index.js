@@ -4,6 +4,24 @@
  * @module Salmon Says App 
  */
 'use strict';
+
+function toggleSwitch(el) {
+    let name = el + 'Inner',
+        thisEl = document.getElementById('powerInner'),
+        currentClass = thisEl.classList;
+    console.log('triggered switch for ' + el);
+
+    thisEl.classList = 'switchInnerOn';
+    /*
+    if (currentClass === 'switchInnerOff') {
+        thisEl.classList = 'switchInnerOn';
+    } else {
+        thisEl.classList = 'switchInneroff';
+    }
+    */
+
+}
+
 /**
  * The object containing the game logic and interactions with the DOM
  *
@@ -222,6 +240,7 @@ const Game = ( function() {
             play();
         });
         document.getElementById('power').addEventListener('click', () => {
+            toggleSwitch('power');
             togglePower();
         });
         document.getElementById('strictToggle').addEventListener('click', () => {

@@ -1,15 +1,17 @@
 .background {
-    background-color: brown;
+    background-color: rgb(10, 10, 10);
 }
 
 .menuBlock {
     display: block;
     margin: auto;
+    height: 120px;
     text-align: center;
     background-color: grey;
 }
 
 .menuButtons {
+    cursor: pointer;
     border-radius: 50%;
     height: 50px;
     width: 50px;
@@ -22,9 +24,14 @@
 }
 
 .colourButtons {
+    border-style:none;
+    outline: none;
+    cursor: pointer;
     border-radius: 10%;
-    width: 49%;
+    width: 46%;
+    margin: 6px;
     color: white;
+    box-shadow: 0 9px #999;
 }
 
 .colourButtons:after {
@@ -33,14 +40,19 @@
     padding-bottom: 100%;
 }
 
+.colourButtons:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+
+}
 
 .redButton {
     @extend .colourButtons;
     background-color: rgb(255, 0, 0);
-    transition-duration: 0.2s
 }
 .redButton:hover {
     background-color: rgb(200, 0, 0);
+    transition-duration: 0.1s;
 }
 
 .blueButton {
@@ -50,27 +62,29 @@
 
 .blueButton:hover {
     background-color: rgb(0, 0, 200);
-    transition-duration: 0.2s
+    transition-duration: 0.1s;
 }
 
 .yellowButton {
     @extend .colourButtons;
     background-color: rgb(255, 255, 0);
+    margin-bottom: 15px;
 }
 
 .yellowButton:hover {
     background-color: rgb(230, 230, 0);
-    transition-duration: 0.2s
+    transition-duration: 0.1s;
 }
 
 .greenButton {
     @extend .colourButtons;
     background-color: rgb(0, 230, 0);
+    margin-bottom: 15px;
 }
 
 .greenButton:hover {
     background-color: rgb(0, 200, 0);
-    transition-duration: 0.2s
+    transition-duration: 0.1s;
 }
 
 .alert {
@@ -96,6 +110,7 @@
 }
 
 .switchInnerOn {
+    cursor: pointer;
     height: 46px;
     width: 46px;
     background-color:darkgrey;

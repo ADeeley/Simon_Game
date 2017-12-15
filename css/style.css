@@ -1,13 +1,15 @@
 .background {
-  background-color: brown; }
+  background-color: #0a0a0a; }
 
 .menuBlock {
   display: block;
   margin: auto;
+  height: 120px;
   text-align: center;
   background-color: grey; }
 
 .menuButtons {
+  cursor: pointer;
   border-radius: 50%;
   height: 50px;
   width: 50px; }
@@ -18,42 +20,53 @@
   text-align: center; }
 
 .colourButtons, .redButton, .blueButton, .yellowButton, .greenButton {
+  border-style: none;
+  outline: none;
+  cursor: pointer;
   border-radius: 10%;
-  width: 49%;
-  color: white; }
+  width: 46%;
+  margin: 6px;
+  color: white;
+  box-shadow: 0 9px #999; }
 
 .colourButtons:after, .redButton:after, .blueButton:after, .yellowButton:after, .greenButton:after {
   display: block;
   content: "";
   padding-bottom: 100%; }
 
+.colourButtons:active, .redButton:active, .blueButton:active, .yellowButton:active, .greenButton:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px); }
+
 .redButton {
-  background-color: red;
-  transition-duration: 0.2s; }
+  background-color: red; }
 
 .redButton:hover {
-  background-color: #c80000; }
+  background-color: #c80000;
+  transition-duration: 0.1s; }
 
 .blueButton {
   background-color: blue; }
 
 .blueButton:hover {
   background-color: #0000c8;
-  transition-duration: 0.2s; }
+  transition-duration: 0.1s; }
 
 .yellowButton {
-  background-color: yellow; }
+  background-color: yellow;
+  margin-bottom: 15px; }
 
 .yellowButton:hover {
   background-color: #e6e600;
-  transition-duration: 0.2s; }
+  transition-duration: 0.1s; }
 
 .greenButton {
-  background-color: #00e600; }
+  background-color: #00e600;
+  margin-bottom: 15px; }
 
 .greenButton:hover {
   background-color: #00c800;
-  transition-duration: 0.2s; }
+  transition-duration: 0.1s; }
 
 .alert {
   background-color: grey;
@@ -74,6 +87,7 @@
   border: 2px solid black; }
 
 .switchInnerOn, .switchInnerOff {
+  cursor: pointer;
   height: 46px;
   width: 46px;
   background-color: darkgrey;
