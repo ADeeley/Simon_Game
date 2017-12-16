@@ -56,43 +56,70 @@
 
 .redButton {
     @extend .colourButtons;
-    background-color: rgb(255, 0, 0);
+    background-color: rgb(200, 0, 0);
 }
 
+/*
 .redButton:hover {
-    background-color: rgb(200, 0, 0);
+    background-color: rgb(220, 50, 50);
+    transition-duration: 0.1s;
+}
+
+*/
+.redButtonFlash {
+    background-color: rgb(255, 0, 0);
     transition-duration: 0.1s;
 }
 
 .blueButton {
     @extend .colourButtons;
-    background-color: rgb(0, 0, 255);
+    background-color: rgb(0, 0, 200);
 }
 
+/*
 .blueButton:hover {
     background-color: rgb(0, 0, 200);
+    transition-duration: 0.1s;
+}
+*/
+
+.blueButtonFlash {
+    background-color: rgb(0, 0, 255);
     transition-duration: 0.1s;
 }
 
 .yellowButton {
     @extend .colourButtons;
-    background-color: rgb(255, 255, 0);
+    background-color: rgb(200, 200, 0);
     margin-bottom: 15px;
 }
 
+/*
 .yellowButton:hover {
     background-color: rgb(230, 230, 0);
+    transition-duration: 0.1s;
+}
+*/
+
+.yellowButtonFlash {
+    background-color: rgb(255, 255, 0);
     transition-duration: 0.1s;
 }
 
 .greenButton {
     @extend .colourButtons;
-    background-color: rgb(0, 230, 0);
+    background-color: rgb(0, 200, 0);
     margin-bottom: 15px;
 }
 
+/*
 .greenButton:hover {
     background-color: rgb(0, 200, 0);
+    transition-duration: 0.1s;
+}
+*/
+.greenButtonFlash {
+    background-color: rgb(0, 255, 0);
     transition-duration: 0.1s;
 }
 

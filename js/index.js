@@ -119,7 +119,7 @@ const Game = ( function() {
     function playPattern(i = 0) {
         let colour = cpuPattern[i++];
         console.log('playPattern ' + cpuPattern);
-        COLOURPADS.flash(colour);
+        COLOURPADS.flash(colour, 1000);
         AUDIO.playAudio(colour);
         if (i < cpuPattern.length) {
             return setTimeout(() => {
@@ -225,6 +225,7 @@ const Game = ( function() {
             return;
         }
         Game.recordUserInput(colour);
+        COLOURPADS.flash(colour, 250);
         AUDIO.playAudio(colour);
         Game.processInput();
     }

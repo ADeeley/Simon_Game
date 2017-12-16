@@ -9,14 +9,15 @@ function init() {
     console.log(lights);
 }
 
-function flash(colour) {
-    let el = lights[colour].style;
-    let prevClr = el['background-color'];
-    el['background-color'] = 'white';
+function flash(colour, duration) {
+    let el = lights[colour];
+    el.classList.add(colour + 'ButtonFlash');
     setTimeout(() => {
-        el['background-color'] = prevClr;
-    }, 1000);
+        el.classList.remove(colour + 'ButtonFlash');
+        el.classList.add(colour + 'Button');
+    }, duration);
 }
+
 
 module.exports = {
     flash,
