@@ -25,21 +25,20 @@
     <!-- Game options -->
     <div id="container" class="background">
         <div id="menu" class="menuBlock">
-            <!--
-            <label >
-                <input type="checkbox" class="menuButtons" checked autocomplete="off" id="strictToggle" name="settings" >Strict
-            </label>
-            <button id="power" name="settings" class="menuButtons">Power</button>
-            -->
-            
-            <div id="strictToggle" class="switchOuter"><div id="strictToggleInner" class="switchInnerOff">strict</div></div>
-            <div id="power" class="switchOuter"><div id="powerInner" class="switchInnerOff">power</div></div>
             <button id="reset" name="settings" class="menuButtons">Reset</button>
             <button id="start" name="settings" class="menuButtons">Start</button>
+            <label class="switch">
+                <input id="power" type="checkbox">
+                <span class="slider"></span>
+            </label>
+            <label class="switch">
+                <input id="strictToggle" type="checkbox">
+                <span class="slider"></span>
+            </label>
             <div id="powerLight" class="light"></div>
         </div>
+        <!-- Main colour buttons -->
         <div id="colourButtons" class="centreBlock">
-            <!-- Main colour buttons -->
             <div>
                 <button id="red" class="redButton"></button>
                 <button id="blue" class="blueButton"></button>

@@ -1,10 +1,11 @@
 .background {
-  background-color: #0a0a0a; }
+  background-color: #0a0a0a;
+  max-width: 400px; }
 
 .menuBlock {
-  display: block;
+  display: inline-block;
   margin: auto;
-  height: 120px;
+  width: 100%;
   text-align: center;
   background-color: grey; }
 
@@ -13,8 +14,8 @@
   outline: none;
   cursor: pointer;
   border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   box-shadow: 0 6px #999; }
 
 .menuButtons:active {
@@ -86,27 +87,67 @@
 .footer {
   background-color: darkGrey; }
 
+/*
 .switchOuter {
-  display: inline-block;
-  height: 100px;
-  width: 50px;
-  background-color: grey;
-  border: 2px solid black; }
+    display: inline-block;
+    height: 80px;
+    width: 40px;
+    background-color:grey;
+    border: 2px solid black;    
+}
 
-.switchInnerOn, .switchInnerOff {
-  cursor: pointer;
-  height: 46px;
-  width: 46px;
-  background-color: darkgrey;
-  border: 2px solid black; }
-
+.switchInnerOn {
+    cursor: pointer;
+    height: 36px;
+    width: 36px;
+    background-color:darkgrey;
+    border: 2px solid black;    
+}
 .switchInnerOff {
-  margin-top: 50px; }
+    @extend .switchInnerOn;
+}
+
+*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 60px; }
+
+.switch input {
+  display: none; }
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s; }
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  top: 4px;
+  left: 4px;
+  background-color: white;
+  webkit-transition: .1s;
+  transition: .1s; }
+
+input:checked + .slider:before {
+  -webkit-transform: translateY(26px);
+  -ms-transform: translateY(26px);
+  transform: translateY(26px); }
 
 .light {
   display: inline-block;
   width: 30px;
   height: 30px;
+  margin-left: 10%;
   border: 2px solid white;
   border-radius: 50%;
   background-color: darkred; }
