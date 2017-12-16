@@ -1,6 +1,6 @@
 .background {
   background-color: #0a0a0a;
-  max-width: 400px; }
+  max-width: 600px; }
 
 .menuBlock {
   display: inline-block;
@@ -27,16 +27,26 @@
   margin: auto;
   text-align: center; }
 
-.colourButtons, .redButton, .blueButton, .yellowButton, .greenButton {
-  border-style: none;
-  outline: none;
-  cursor: pointer;
-  border-radius: 10%;
-  width: 46%;
-  margin: 6px;
-  color: white;
-  box-shadow: 0 9px #999; }
-
+@media only screen and (max-width: 370px) {
+  .colourButtons, .redButton, .blueButton, .yellowButton, .greenButton {
+    border-style: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 10%;
+    width: 44%;
+    margin: 6px;
+    color: white;
+    box-shadow: 0 9px #999; } }
+@media only screen and (min-width: 371px) {
+  .colourButtons, .redButton, .blueButton, .yellowButton, .greenButton {
+    border-style: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 10%;
+    width: 46%;
+    margin: 6px;
+    color: white;
+    box-shadow: 0 9px #999; } }
 .colourButtons:after, .redButton:after, .blueButton:after, .yellowButton:after, .greenButton:after {
   display: block;
   content: "";
