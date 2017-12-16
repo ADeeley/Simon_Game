@@ -2,7 +2,7 @@
 let sounds = {};
 let colours = ['red', 'blue', 'yellow', 'green'];
 
-function getAudioSources() {
+function init() {
     // TO DO: BY tag name, then batch assign
     for (let i = 0; i < 4; i++) {
         let sound = document.getElementById('simonSound' + i);
@@ -16,15 +16,24 @@ function playAudio(colour) {
 }
 
 module.exports = {
-    getAudioSources,
     playAudio,
+    init,
 };
 
 },{}],2:[function(require,module,exports){
+let colours = ['red', 'blue', 'yellow', 'green'];
 let lights = {};
 
+function init() {
+    for (let i = 0; i < 4; i++) {
+        let light = document.getElementById(colours[i]);
+        lights[colours[i]] = light;
+    }
+    console.log(lights);
+}
+
 function flash(colour) {
-    let el = document.getElementById(colour).style;
+    let el = lights[colour].style;
     let prevClr = el['background-color'];
     el['background-color'] = 'white';
     setTimeout(() => {
@@ -34,6 +43,7 @@ function flash(colour) {
 
 module.exports = {
     flash,
+    init
 };
 
 },{}],3:[function(require,module,exports){
@@ -226,7 +236,8 @@ const Game = ( function() {
         return this;
     }
     function init() {
-        AUDIO.getAudioSources();
+        AUDIO.init();
+        COLOURPADS.init();
         document.getElementById('colourButtons').addEventListener('click', () => {
             if (cpuPattern.length === 0) {return;}
             if (event.target.tagName !== 'div') {

@@ -187,7 +187,8 @@ const Game = ( function() {
         return this;
     }
     function init() {
-        AUDIO.getAudioSources();
+        AUDIO.init();
+        COLOURPADS.init();
         document.getElementById('colourButtons').addEventListener('click', () => {
             if (cpuPattern.length === 0) {return;}
             if (event.target.tagName !== 'div') {

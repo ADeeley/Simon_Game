@@ -1,7 +1,16 @@
+let colours = ['red', 'blue', 'yellow', 'green'];
 let lights = {};
 
+function init() {
+    for (let i = 0; i < 4; i++) {
+        let light = document.getElementById(colours[i]);
+        lights[colours[i]] = light;
+    }
+    console.log(lights);
+}
+
 function flash(colour) {
-    let el = document.getElementById(colour).style;
+    let el = lights[colour].style;
     let prevClr = el['background-color'];
     el['background-color'] = 'white';
     setTimeout(() => {
@@ -11,4 +20,5 @@ function flash(colour) {
 
 module.exports = {
     flash,
+    init
 };
