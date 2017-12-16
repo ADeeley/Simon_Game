@@ -3,6 +3,7 @@ let sounds = {};
 let colours = ['red', 'blue', 'yellow', 'green'];
 
 function getAudioSources() {
+    // TO DO: BY tag name, then batch assign
     for (let i = 0; i < 4; i++) {
         let sound = document.getElementById('simonSound' + i);
         sounds[colours[i]] = sound;
@@ -20,6 +21,22 @@ module.exports = {
 };
 
 },{}],2:[function(require,module,exports){
+let lights = {};
+
+function flash(colour) {
+    let el = document.getElementById(colour).style;
+    let prevClr = el['background-color'];
+    el['background-color'] = 'white';
+    setTimeout(() => {
+        el['background-color'] = prevClr;
+    }, 1000);
+}
+
+module.exports = {
+    flash,
+};
+
+},{}],3:[function(require,module,exports){
 /**
  * Salmon Says Application
  * 
@@ -28,6 +45,7 @@ module.exports = {
 'use strict';
 
 const AUDIO = require('./audio.js');
+const COLOURPADS = require('./colourPads.js');
 /**
  * The object containing the game logic and interactions with the DOM
  *
@@ -140,7 +158,7 @@ const Game = ( function() {
     function playPattern(i = 0) {
         let colour = cpuPattern[i++];
         console.log('playPattern ' + cpuPattern);
-        flash(colour);
+        COLOURPADS.flash(colour);
         AUDIO.playAudio(colour);
         if (i < cpuPattern.length) {
             return setTimeout(() => {
@@ -207,20 +225,6 @@ const Game = ( function() {
         userPattern = [];
         return this;
     }
-    /**
-     * Animates the current colour in the sequence.
-     * @return null
-     */
-    function flash(colour) {
-        console.log('flash: ' + colour);
-        let el = document.getElementById(colour).style;
-        let prevClr = el['background-color'];
-        el['background-color'] = 'white';
-        setTimeout(() => {
-            el['background-color'] = prevClr;
-        }, 1000);
-    }
-
     function init() {
         AUDIO.getAudioSources();
         document.getElementById('colourButtons').addEventListener('click', () => {
@@ -325,4 +329,4 @@ Game.processInput = function() {
 };
 window.onload = Game.init();
 
-},{"./audio.js":1}]},{},[2]);
+},{"./audio.js":1,"./colourPads.js":2}]},{},[3]);

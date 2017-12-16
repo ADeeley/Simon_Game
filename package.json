@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "minify": "uglifyjs index.js"
+    "minify": "uglifyjs index.js",
+    "build": "watchify js/index.js -o js/bundle.js"
   },
   "keywords": [],
   "author": "",

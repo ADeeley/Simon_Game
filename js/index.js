@@ -6,6 +6,7 @@
 'use strict';
 
 const AUDIO = require('./audio.js');
+const COLOURPADS = require('./colourPads.js');
 /**
  * The object containing the game logic and interactions with the DOM
  *
@@ -118,7 +119,7 @@ const Game = ( function() {
     function playPattern(i = 0) {
         let colour = cpuPattern[i++];
         console.log('playPattern ' + cpuPattern);
-        flash(colour);
+        COLOURPADS.flash(colour);
         AUDIO.playAudio(colour);
         if (i < cpuPattern.length) {
             return setTimeout(() => {
@@ -185,20 +186,6 @@ const Game = ( function() {
         userPattern = [];
         return this;
     }
-    /**
-     * Animates the current colour in the sequence.
-     * @return null
-     */
-    function flash(colour) {
-        console.log('flash: ' + colour);
-        let el = document.getElementById(colour).style;
-        let prevClr = el['background-color'];
-        el['background-color'] = 'white';
-        setTimeout(() => {
-            el['background-color'] = prevClr;
-        }, 1000);
-    }
-
     function init() {
         AUDIO.getAudioSources();
         document.getElementById('colourButtons').addEventListener('click', () => {
