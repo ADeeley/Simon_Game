@@ -117,6 +117,7 @@ const Game = ( function() {
      */
     function playPattern(i = 0) {
         let colour = cpuPattern[i++];
+        console.log('playPattern ' + cpuPattern);
         flash(colour);
         playAudio(colour);
         if (i < cpuPattern.length) {
@@ -189,6 +190,7 @@ const Game = ( function() {
      * @return null
      */
     function flash(colour) {
+        console.log('flash: ' + colour);
         let el = document.getElementById(colour).style;
         let prevClr = el['background-color'];
         el['background-color'] = 'white';
@@ -206,18 +208,17 @@ const Game = ( function() {
      * Plays the audio associated with the given colour
      */
     function playAudio(colour) {
+        console.log('playAudio: ' + colour);
         sounds[colour].play();
     }
 
     function init() {
         getAudioSources();
-        /*
-        console.log(sounds);
-        sounds['red'].play();
-        */
-
         document.getElementById('colourButtons').addEventListener('click', () => {
-            getPlayerInput(event.target.id);
+            if (cpuPattern.length === 0) {return;}
+            if (event.target.tagName !== 'div') {
+                getPlayerInput(event.target.id);
+            }
         });
         document.getElementById('start').addEventListener('click', () => {
             console.log('Start');
