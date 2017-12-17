@@ -4,3 +4,4 @@
 *.scssc
 *.css.map
 node_modules
+/font-awesome-4.7.0
