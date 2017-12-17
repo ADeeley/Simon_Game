@@ -171,7 +171,7 @@ const Game = ( function() {
     function displayAlert(message) {
         alertText.innerHTML = message;
         setTimeout( () => {
-            alertText.innerHTML = ' test';
+            alertText.innerHTML = 'test ';
         }, 1000);
     }
     /**
@@ -237,7 +237,7 @@ const Game = ( function() {
             return;
         }
         Game.recordUserInput(colour);
-        COLOURPADS.flash(colour, 250);
+        //COLOURPADS.flash(colour, 250);
         AUDIO.playAudio(colour);
         Game.processInput();
     }

@@ -63,12 +63,18 @@
   background-color: red;
   transition-duration: 0.1s; }
 
+.redButton:active {
+  background-color: red; }
+
 .blueButton {
   background-color: #0000c8; }
 
 .blueButtonFlash {
   background-color: blue;
   transition-duration: 0.1s; }
+
+.blueButton:active {
+  background-color: blue; }
 
 .yellowButton {
   background-color: #c8c800;
@@ -78,6 +84,9 @@
   background-color: yellow;
   transition-duration: 0.1s; }
 
+.yellowButton:active {
+  background-color: yellow; }
+
 .greenButton {
   background-color: #00c800;
   margin-bottom: 15px; }
@@ -85,6 +94,9 @@
 .greenButtonFlash {
   background-color: lime;
   transition-duration: 0.1s; }
+
+.greenButton:active {
+  background-color: lime; }
 
 .alert {
   display: inline-block;
