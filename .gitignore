@@ -2,6 +2,7 @@
 *.un
 *.swp
 *.scssc
-*.css.map
+*style.css.map
 node_modules
 /font-awesome-4.7.0
+bundle.js
