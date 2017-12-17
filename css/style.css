@@ -178,13 +178,16 @@ input:checked + .slider:before {
   -ms-transform: translateY(26px);
   transform: translateY(26px); }
 
-.light {
+.lightOff, .lightOn {
   display: inline-block;
   width: 30px;
   height: 30px;
   margin-left: 10%;
   border: 2px solid white;
   border-radius: 50%;
-  background-color: darkred; }
+  background-color: #640000; }
+
+.lightOn {
+  background-color: red; }
 
 /*# sourceMappingURL=style.css.map */

@@ -214,12 +214,17 @@
 
 // LED Lights ====================================================
 
-.light {
+.lightOff {
     display: inline-block;
     width: 30px;
     height: 30px;
     margin-left: 10%;
     border: 2px solid white;
     border-radius: 50%;
-    background-color: darkred;
+    background-color: rgb(100, 0, 0);
+}
+
+.lightOn {
+    @extend .lightOff;
+    background-color: rgb(255, 0, 0);
 }

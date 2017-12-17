@@ -71,11 +71,22 @@ const Game = ( function() {
         listening = false,
         strict = false,
         power = false,
-        alertText = document.getElementById('alertText');
+        alertText = document.getElementById('alertText'),
+        powerLight = document.getElementById('powerLight');
+
 
     // ======================================================================
     // Privileged Methods ===================================================
     // ======================================================================
+    function _turnPowerLightOn() {
+        if (powerLight.classList.contains('lightOff')) {
+            powerLight.classList.remove('lightOff');
+            powerLight.classList.add('lightOn');
+        } else {
+            powerLight.classList.remove('lightOn');
+            powerLight.classList.add('lightOff');
+        }
+    }
     /**
      * Turns the game on and off
      *
@@ -84,6 +95,7 @@ const Game = ( function() {
     function togglePower() {
         power = !power;
         console.log('Power: ' + power);
+        _turnPowerLightOn();
         return this;
     }
     /**
