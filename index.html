@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
 
     <title>Salmon Says!</title>
     <audio id="simonSound0">
@@ -26,18 +26,19 @@
     <div id="container" class="background">
         <div id="menu" class="menuBlock">
             <div id="menuButtons" class="menuButtonsContainer">
-                <button id="reset" name="settings" class="menuButtons">Reset</button>
-                <button id="start" name="settings" class="menuButtons">Start</button>
+                <button id="reset" name="settings" class="menuButtons"><i class="fa fa-refresh fa-2x"></i></button>
+                <button id="start" name="settings" class="menuButtons"><i class="fa fa-play fa-2x"></i></button>
+                
             </div>
             <div id="menuSwitches" class="menuSwitches">
                 <label class="switch">
                     <input id="power" type="checkbox">
                     <span class="slider"></span>
-                </label>
+                </label><i class="fa fa-power-off"></i>
                 <label class="switch">
                     <input id="strictToggle" type="checkbox">
                     <span class="slider"></span>
-                </label>
+                </label><i class="fa fa-heart"></i>
             </div>
             <div id="powerLight" class="lightOff"></div>
         </div>
