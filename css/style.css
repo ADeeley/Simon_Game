@@ -59,13 +59,6 @@
 .redButton {
   background-color: #c80000; }
 
-/*
-.redButton:hover {
-    background-color: rgb(220, 50, 50);
-    transition-duration: 0.1s;
-}
-
-*/
 .redButtonFlash {
   background-color: red;
   transition-duration: 0.1s; }
@@ -73,12 +66,6 @@
 .blueButton {
   background-color: #0000c8; }
 
-/*
-.blueButton:hover {
-    background-color: rgb(0, 0, 200);
-    transition-duration: 0.1s;
-}
-*/
 .blueButtonFlash {
   background-color: blue;
   transition-duration: 0.1s; }
@@ -87,12 +74,6 @@
   background-color: #c8c800;
   margin-bottom: 15px; }
 
-/*
-.yellowButton:hover {
-    background-color: rgb(230, 230, 0);
-    transition-duration: 0.1s;
-}
-*/
 .yellowButtonFlash {
   background-color: yellow;
   transition-duration: 0.1s; }
@@ -101,48 +82,30 @@
   background-color: #00c800;
   margin-bottom: 15px; }
 
-/*
-.greenButton:hover {
-    background-color: rgb(0, 200, 0);
-    transition-duration: 0.1s;
-}
-*/
 .greenButtonFlash {
   background-color: lime;
   transition-duration: 0.1s; }
 
 .alert {
+  display: inline-block;
+  text-align: center;
+  font-size: 20px;
   background-color: grey;
-  border: 1px solid black;
-  height: 50px; }
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 23%;
+  width: 30%; }
 
 .gameNameStyle {
-  display: inline; }
+  display: inline-block;
+  width: 40%;
+  margin-left: 5%; }
 
 .footer {
-  background-color: darkGrey; }
+  display: inline-block;
+  background-color: darkGrey;
+  width: 100%; }
 
-/*
-.switchOuter {
-    display: inline-block;
-    height: 80px;
-    width: 40px;
-    background-color:grey;
-    border: 2px solid black;    
-}
-
-.switchInnerOn {
-    cursor: pointer;
-    height: 36px;
-    width: 36px;
-    background-color:darkgrey;
-    border: 2px solid black;    
-}
-.switchInnerOff {
-    @extend .switchInnerOn;
-}
-
-*/
 .switch {
   position: relative;
   display: inline-block;
@@ -180,6 +143,7 @@ input:checked + .slider:before {
 
 .lightOff, .lightOn {
   display: inline-block;
+  margin-left: 20%;
   width: 30px;
   height: 30px;
   margin-left: 10%;
@@ -189,5 +153,15 @@ input:checked + .slider:before {
 
 .lightOn {
   background-color: red; }
+
+.menuButtonsContainer {
+  display: inline-block;
+  margin-right: 10%;
+  margin-bottom: 10%; }
+
+.menuSwitches {
+  display: inline-block;
+  margin-right: 10%;
+  margin-left: 10%; }
 
 /*# sourceMappingURL=style.css.map */

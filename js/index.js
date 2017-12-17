@@ -171,7 +171,7 @@ const Game = ( function() {
     function displayAlert(message) {
         alertText.innerHTML = message;
         setTimeout( () => {
-            alertText.innerHTML = '';
+            alertText.innerHTML = ' test';
         }, 1000);
     }
     /**

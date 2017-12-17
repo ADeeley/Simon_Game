@@ -25,16 +25,20 @@
     <!-- Game options -->
     <div id="container" class="background">
         <div id="menu" class="menuBlock">
-            <button id="reset" name="settings" class="menuButtons">Reset</button>
-            <button id="start" name="settings" class="menuButtons">Start</button>
-            <label class="switch">
-                <input id="power" type="checkbox">
-                <span class="slider"></span>
-            </label>
-            <label class="switch">
-                <input id="strictToggle" type="checkbox">
-                <span class="slider"></span>
-            </label>
+            <div id="menuButtons" class="menuButtonsContainer">
+                <button id="reset" name="settings" class="menuButtons">Reset</button>
+                <button id="start" name="settings" class="menuButtons">Start</button>
+            </div>
+            <div id="menuSwitches" class="menuSwitches">
+                <label class="switch">
+                    <input id="power" type="checkbox">
+                    <span class="slider"></span>
+                </label>
+                <label class="switch">
+                    <input id="strictToggle" type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
             <div id="powerLight" class="lightOff"></div>
         </div>
         <!-- Main colour buttons -->
@@ -52,7 +56,7 @@
         <div id="footerBar" class="footer">
             <p id="gameName" class="gameNameStyle">SIMON - 6000</p>
             <div id="AlertBox" class="alert">
-                <p id="alertText"></p>
+                <p id="alertText">test</p>
             </div>
         </div>
     </div>
