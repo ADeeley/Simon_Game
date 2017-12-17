@@ -1,10 +1,12 @@
 .background {
   background-color: #0a0a0a;
-  max-width: 600px; }
+  max-width: 600px;
+  margin: auto; }
 
 .menuBlock {
   display: inline-block;
   margin: auto;
+  background-image: url("F:/mystuff/freecodecamp/Simon/images/brushed-metal-texture - menu.jpg");
   width: 100%;
   text-align: center;
   background-color: grey; }
@@ -115,7 +117,7 @@
 
 .footer {
   display: inline-block;
-  background-color: darkGrey;
+  background-image: url("F:/mystuff/freecodecamp/Simon/images/brushed-metal-texture.jpg");
   width: 100%; }
 
 .switch {
@@ -175,5 +177,8 @@ input:checked + .slider:before {
   display: inline-block;
   margin-right: 10%;
   margin-left: 10%; }
+
+.metalBacking {
+  width: 100%; }
 
 /*# sourceMappingURL=style.css.map */

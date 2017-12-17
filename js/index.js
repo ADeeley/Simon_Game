@@ -201,7 +201,7 @@ const Game = ( function() {
     function init() {
         AUDIO.init();
         COLOURPADS.init();
-        document.getElementById('colourButtons').addEventListener('click', () => {
+        document.getElementById('colourButtons').addEventListener('mousedown', () => {
             if (cpuPattern.length === 0) {return;}
             if (event.target.tagName !== 'div') {
                 getPlayerInput(event.target.id);
