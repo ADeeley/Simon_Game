@@ -1,3 +1,6 @@
+body {
+  background-color: steelblue; }
+
 p {
   margin-top: 0;
   margin-bottom: 0; }
@@ -124,13 +127,20 @@ p {
   font-size: 40px;
   font-family: 'Aldrich', regular; }
 
-.gameNameStyle {
-  display: inline-block;
-  font-family: "Bangers", regular;
-  font-size: 40px;
-  width: 40%;
-  margin-left: 5%; }
-
+@media only screen and (min-width: 504px) {
+  .gameNameStyle {
+    display: inline-block;
+    font-family: "Bangers", regular;
+    font-size: 40px;
+    width: 40%;
+    margin-left: 5%; } }
+@media only screen and (max-width: 503px) {
+  .gameNameStyle {
+    display: inline-block;
+    font-family: "Bangers", regular;
+    font-size: 20px;
+    width: 40%;
+    margin-left: 5%; } }
 .footer {
   display: inline-block;
   background-image: url("F:/mystuff/freecodecamp/Simon/images/brushed-metal-texture.jpg");

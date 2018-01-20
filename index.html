@@ -1,74 +1,75 @@
 <!DOCTYPE html>
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
 
-    <title>Salmon Says!</title>
-    <!-- AUDIO -->
-    <audio id="simonSound0">
-        <source src="audio/simonSound0.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="simonSound1">
-        <source src="audio/simonSound1.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="simonSound2">
-        <source src="audio/simonSound2.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="simonSound3">
-        <source src="audio/simonSound3.mp3" type="audio/mpeg">
-    </audio>
-    <!-- GOOGLE FONTS -->
-    <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Aldrich">
-    <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Bangers">
-</head>
-<body>
-    <!-- Game options -->
-    <div id="container" class="background">
-        <div id="menu" class="menuBlock">
-            <div id="menuButtons" class="menuButtonsContainer">
-                <button id="reset" name="settings" class="menuButtons"><i class="fa fa-refresh fa-2x"></i></button>
-                <button id="start" name="settings" class="menuButtons"><i class="fa fa-play fa-2x"></i></button>
-                
+        <title>Salmon Says!</title>
+        <!-- AUDIO -->
+        <audio id="simonSound0">
+            <source src="audio/simonSound0.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="simonSound1">
+            <source src="audio/simonSound1.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="simonSound2">
+            <source src="audio/simonSound2.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="simonSound3">
+            <source src="audio/simonSound3.mp3" type="audio/mpeg">
+        </audio>
+        <!-- GOOGLE FONTS -->
+        <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Aldrich">
+        <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Bangers">
+    </head>
+    <body>
+        <!-- Game options -->
+        <div id="container" class="background">
+            <div id="menu" class="menuBlock">
+                <div id="menuButtons" class="menuButtonsContainer">
+                    <button id="reset" name="settings" class="menuButtons"><i class="fa fa-refresh fa-2x"></i></button>
+                    <button id="start" name="settings" class="menuButtons"><i class="fa fa-play fa-2x"></i></button>
+                    
+                </div>
+                <div id="menuSwitches" class="menuSwitches">
+                    <label class="switch">
+                        <input id="power" type="checkbox">
+                        <span class="slider"></span>
+                    </label><i class="fa fa-power-off"></i>
+                    <label class="switch">
+                        <input id="strictToggle" type="checkbox">
+                        <span class="slider"></span>
+                    </label>1 x <i class="fa fa-heart"></i>
+                </div>
+                <div id="powerLight" class="lightOff"></div>
             </div>
-            <div id="menuSwitches" class="menuSwitches">
-                <label class="switch">
-                    <input id="power" type="checkbox">
-                    <span class="slider"></span>
-                </label><i class="fa fa-power-off"></i>
-                <label class="switch">
-                    <input id="strictToggle" type="checkbox">
-                    <span class="slider"></span>
-                </label><i class="fa fa-heart"></i>
+            <!-- Main colour buttons -->
+            <div id="colourButtons" class="centreBlock">
+                <div>
+                    <button id="red" class="redButton"></button>
+                    <button id="blue" class="blueButton"></button>
+                </div>
+                <div>
+                    <button id="yellow" class="yellowButton"></button>
+                    <button id="green" class="greenButton"></button>
+                </div>
+
             </div>
-            <div id="powerLight" class="lightOff"></div>
+            <div id="footerBar" class="footer">
+                <p id="gameName" class="gameNameStyle">SIMON - 6000</p>
+                <div id="AlertBox" class="alert">
+                    <p id="alertText" class="alertText">test</p>
+                </div>
+            </div>
         </div>
-        <!-- Main colour buttons -->
-        <div id="colourButtons" class="centreBlock">
-            <div>
-                <button id="red" class="redButton"></button>
-                <button id="blue" class="blueButton"></button>
-            </div>
-            <div>
-                <button id="yellow" class="yellowButton"></button>
-                <button id="green" class="greenButton"></button>
-            </div>
-
-        </div>
-        <div id="footerBar" class="footer">
-            <p id="gameName" class="gameNameStyle">SIMON - 6000</p>
-            <div id="AlertBox" class="alert">
-                <p id="alertText" class="alertText">test</p>
-            </div>
-        </div>
-    </div>
-    <!-- Main script loaded last -->
-    <script src="js/bundle.js"></script>
-</body>
-
+        <!-- Main script loaded last -->
+        <script src="js/bundle.js"></script>
+    </body>
+</html>
 
