@@ -121,27 +121,34 @@ p {
   border: 4px solid black;
   border-radius: 5px; }
 
-.alertText {
-  text-align: center;
-  line-height: 1;
-  vertical-align: text-top;
-  font-size: 40px;
-  font-family: 'Aldrich', regular; }
-
 @media only screen and (min-width: 504px) {
   .gameNameStyle {
     display: inline-block;
     font-family: "Bangers", regular;
     font-size: 40px;
     width: 40%;
-    margin-left: 5%; } }
+    margin-left: 5%; }
+
+  .alertText {
+    text-align: center;
+    line-height: 1;
+    vertical-align: text-top;
+    font-size: 40px;
+    font-family: 'Aldrich', regular; } }
 @media only screen and (max-width: 503px) {
   .gameNameStyle {
     display: inline-block;
     font-family: "Bangers", regular;
-    font-size: 20px;
+    font-size: 25px;
     width: 40%;
-    margin-left: 5%; } }
+    margin-left: 5%; }
+
+  .alertText {
+    text-align: center;
+    line-height: 1;
+    vertical-align: text-top;
+    font-size: 25px;
+    font-family: 'Aldrich', regular; } }
 .footer {
   display: inline-block;
   background-image: url("F:/mystuff/freecodecamp/Simon/images/brushed-metal-texture.jpg");

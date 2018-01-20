@@ -1,5 +1,5 @@
 $largeText: 40px;
-$mediumText: 20px;
+$mediumText: 25px;
 
 body {
     background-color: steelblue;
@@ -155,14 +155,6 @@ p {
     border-radius: 5px;
 }
 
-.alertText {
-    text-align: center;
-    line-height: 1;
-    vertical-align: text-top;
-    font-size: $largeText;
-    font-family: 'Aldrich', regular;
-}
-
 @media only screen and (min-width: 504px) {
     .gameNameStyle {
         display: inline-block;
@@ -170,6 +162,13 @@ p {
         font-size: $largeText;
         width: 40%;
         margin-left: 5%
+    }
+    .alertText {
+        text-align: center;
+        line-height: 1;
+        vertical-align: text-top;
+        font-size: $largeText;
+        font-family: 'Aldrich', regular;
     }
 }
 
@@ -180,6 +179,14 @@ p {
         font-size: $mediumText;
         width: 40%;
         margin-left: 5%
+    }
+
+    .alertText {
+        text-align: center;
+        line-height: 1;
+        vertical-align: text-top;
+        font-size: $mediumText;
+        font-family: 'Aldrich', regular;
     }
 }
 
