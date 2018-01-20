@@ -212,8 +212,7 @@ input:checked + .slider:before {
 
 .menuButtonsContainer {
   display: inline-block;
-  margin-right: 10%;
-  margin-bottom: 10%; }
+  margin-right: 10%; }
 
 .menuSwitches {
   display: inline-block;
