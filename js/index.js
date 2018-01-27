@@ -18,7 +18,7 @@ const Game = ( function() {
     var colours = ['red', 'blue', 'yellow', 'green'],
         cpuPattern = [],
         userPattern = [],
-        listening = false,
+        listening = true,
         strict = false,
         power = false,
         alertText = document.getElementById('alertText'),
@@ -44,7 +44,6 @@ const Game = ( function() {
      */
     function togglePower() {
         power = !power;
-        console.log('Power: ' + power);
         _turnPowerLightOn();
         return this;
     }
@@ -63,7 +62,6 @@ const Game = ( function() {
      */
     function toggleListenForPlayerInput() {
         listening = !listening;
-        console.log('Listening: ' + listening);
         return this;
     }
     /**
@@ -130,15 +128,21 @@ const Game = ( function() {
      */
     function playPattern(i = 0) {
         let colour = cpuPattern[i++];
-        console.log('playPattern ' + cpuPattern);
         COLOURPADS.flash(colour, 1000);
         AUDIO.playAudio(colour);
+
         if (i < cpuPattern.length) {
             return setTimeout(() => {
                 playPattern(i);
+                if (i == cpuPattern.length -1) {
+                    toggleListenForPlayerInput();
+                    setTimeout(() => displayAlert('READY'), 1000);
+                }
             }, 1000);
-        } else toggleListenForPlayerInput();
-        
+        } 
+        if (cpuPattern.length === 1) {
+            setTimeout(() => displayAlert('READY'), 1000);
+        }
     }
     /**
      * Checks if the pattern inputted by the player matches the generated pattern
@@ -170,9 +174,11 @@ const Game = ( function() {
      */
     function displayAlert(message) {
         alertText.innerHTML = message;
+        /*
         setTimeout( () => {
-            alertText.innerHTML = 'test ';
+            alertText.innerHTML = 'READY';
         }, 1000);
+        */
     }
     /**
      * Starts the game and plays the first pattern
@@ -181,11 +187,9 @@ const Game = ( function() {
      */
     function play() {
         if (!isPoweredOn()) {
-            console.log('Power not on.');
             return;
         }
         incrementPattern();
-        console.log('Test');
         playPattern();
     }
     /**
@@ -202,17 +206,18 @@ const Game = ( function() {
         AUDIO.init();
         COLOURPADS.init();
         document.getElementById('colourButtons').addEventListener('mousedown', () => {
-            if (cpuPattern.length === 0) {return;}
+            if (cpuPattern.length === 0 || !listening) {return;}
             if (event.target.tagName !== 'div') {
                 getPlayerInput(event.target.id);
             }
         });
         document.getElementById('start').addEventListener('click', () => {
-            console.log('Start');
+            displayAlert('WAIT');
             play();
         });
         document.getElementById('power').addEventListener('click', () => {
             togglePower();
+            displayAlert('READY');
         });
         document.getElementById('strictToggle').addEventListener('click', () => {
             toggleStrictMode();
@@ -231,12 +236,11 @@ const Game = ( function() {
     function getPlayerInput(colour) {
         // Prevent this function processing whilst other actions are 
         // being performed
-        console.log('clicked ' + colour);
-
-        if (!Game.isListening) {
+        if (!isListening) {
+            console.log('lalala - not listening!')
             return;
         }
-        Game.recordUserInput(colour);
+        recordUserInput(colour);
         //COLOURPADS.flash(colour, 250);
         AUDIO.playAudio(colour);
         Game.processInput();
@@ -267,6 +271,7 @@ Game.repeatPattern = function() {
     Game.clearUserPattern();
     setTimeout(() => {
         Game.toggleListenForPlayerInput();
+        Game.displayAlert('WAIT');
         Game.playPattern();
     }, 1000);
 };
@@ -277,27 +282,23 @@ Game.repeatPattern = function() {
  * @return null
  */
 Game.processInput = function() {
-    console.log('Processing Input...');
     if (!Game.patternsMatch()) {
         if (Game.isStrict()) {
-            console.log('Strict: ' + Game.isStrict());
-            Game.displayAlert('Strict Failed');
+            Game.displayAlert('FAILED');
             Game.reset();
             Game.toggleListenForPlayerInput();
             return;
         } else {
-            Game.displayAlert('Try Again');
+            Game.displayAlert('WRONG');
             Game.repeatPattern();
             return;
         }
     }
     // Only proceed if the user has inputted a whole pattern
     if (!Game.patternsAreOfEqualLength()) {
-        console.log('not of equal len');
         return;
     } else {
-        Game.displayAlert('Match');
-        console.log('Match');
+        Game.displayAlert('MATCH');
         Game.incrementPattern();
         Game.repeatPattern();
     }

@@ -10,7 +10,6 @@ function init() {
 }
 
 function playAudio(colour) {
-    console.log('playAudio: ' + colour);
     sounds[colour].play();
 }
 
