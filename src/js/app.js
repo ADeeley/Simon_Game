@@ -1,12 +1,8 @@
-/**
- * Salmon Says Application
- * 
- * @module Salmon Says App 
- */
 'use strict';
+import '../css/style.css';
+import AUDIO from './audio.js';
+import COLOURPADS from './colourPads.js';
 
-const AUDIO = require('./audio.js');
-const COLOURPADS = require('./colourPads.js');
 /**
  * The object containing the game logic and interactions with the DOM
  *
