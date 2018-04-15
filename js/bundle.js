@@ -77,7 +77,7 @@ const Game = ( function() {
     // ======================================================================
     // Privileged Methods ===================================================
     // ======================================================================
-    function _turnPowerLightOn() {
+    function _togglePowerLight() {
         if (powerLight.classList.contains('lightOff')) {
             powerLight.classList.remove('lightOff');
             powerLight.classList.add('lightOn');
@@ -93,7 +93,7 @@ const Game = ( function() {
      */
     function togglePower() {
         power = !power;
-        _turnPowerLightOn();
+        _togglePowerLight();
         return this;
     }
     /**
@@ -254,19 +254,25 @@ const Game = ( function() {
     function init() {
         AUDIO.init();
         COLOURPADS.init();
-        document.getElementById('colourButtons').addEventListener('mousedown', () => {
-            if (cpuPattern.length === 0 || !listening) {return;}
-            if (event.target.tagName !== 'div') {
-                getPlayerInput(event.target.id);
-            }
-        });
+        document.getElementById('colourButtons')
+            .addEventListener('mousedown', function (event) {
+                if (!event) event = window.event;
+                if (cpuPattern.length === 0 || !listening) {return;}
+                if (event.target.tagName !== 'div') {
+                    getPlayerInput(event.target.id);
+                }
+            });
         document.getElementById('start').addEventListener('click', () => {
             displayAlert('WAIT');
             play();
         });
         document.getElementById('power').addEventListener('click', () => {
             togglePower();
-            displayAlert('READY');
+            if (power) {
+                displayAlert('READY');
+            } else {
+                displayAlert('--------');
+            }
         });
         document.getElementById('strictToggle').addEventListener('click', () => {
             toggleStrictMode();
